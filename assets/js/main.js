@@ -488,6 +488,149 @@ function init() {
   initDashboardTabs();
   initUserDashboardFeatures();
   initAdminDashboardFeatures();
+
+  // Init homepage estimator slider
+  initHomepageCalculator();
+}
+
+// ==========================================================================
+// 4. Homepage Interactive Modules (Timeline, Estimator, Portfolio Filter, FAQs)
+// ==========================================================================
+
+// Timeline Step Switcher
+function switchTimelineStep(stepNum) {
+  document.querySelectorAll('.timeline-panel').forEach(p => p.classList.add('hidden'));
+  const targetPanel = document.getElementById(`timeline-panel-${stepNum}`);
+  if (targetPanel) targetPanel.classList.remove('hidden');
+
+  const buttons = document.querySelectorAll('.timeline-tab-btn');
+  buttons.forEach(btn => {
+    btn.className = "timeline-tab-btn px-6 py-4 rounded-2xl font-sans text-sm font-bold transition-custom border bg-gray-50 dark:bg-gray-800/40 border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/20";
+  });
+
+  const activeButton = document.getElementById(`timeline-btn-${stepNum}`);
+  if (activeButton) {
+    activeButton.className = "timeline-tab-btn px-6 py-4 rounded-2xl font-sans text-sm font-bold transition-custom border bg-primary-600 border-primary-600 text-white shadow-md";
+  }
+}
+
+// Budget Estimator State Variables
+let selectedTier = 'partial';
+let selectedLocation = 'local';
+
+function selectTier(tierId) {
+  selectedTier = tierId;
+  const buttons = document.querySelectorAll('.tier-card-btn');
+  buttons.forEach(btn => {
+    btn.className = "tier-card-btn p-4 border rounded-2xl text-left transition-custom bg-white dark:bg-gray-900 border-gray-150 dark:border-gray-800 hover:border-primary-500";
+  });
+
+  const activeBtn = document.getElementById(`tier-btn-${tierId}`);
+  if (activeBtn) {
+    activeBtn.className = "tier-card-btn p-4 border rounded-2xl text-left transition-custom bg-primary-50 dark:bg-primary-950/20 border-primary-500 ring-2 ring-primary-500/20";
+  }
+  updateBudgetCalculator();
+}
+
+function selectLocation(locId) {
+  selectedLocation = locId;
+  const buttons = document.querySelectorAll('.location-card-btn');
+  buttons.forEach(btn => {
+    btn.className = "location-card-btn p-4 border rounded-2xl text-left transition-custom bg-white dark:bg-gray-900 border-gray-150 dark:border-gray-800 hover:border-primary-500";
+  });
+
+  const activeBtn = document.getElementById(`location-btn-${locId}`);
+  if (activeBtn) {
+    activeBtn.className = "location-card-btn p-4 border rounded-2xl text-left transition-custom bg-primary-50 dark:bg-primary-950/20 border-primary-500 ring-2 ring-primary-500/20";
+  }
+  updateBudgetCalculator();
+}
+
+function updateBudgetCalculator() {
+  const slider = document.getElementById('guest-slider');
+  if (!slider) return;
+  const guestCount = parseInt(slider.value);
+
+  const badge = document.getElementById('guest-value');
+  if (badge) badge.innerText = `${guestCount} Guests`;
+
+  let basePrice = 0;
+  let pricePerGuest = 0;
+
+  if (selectedTier === 'day-of') {
+    basePrice = 2500;
+    pricePerGuest = 10;
+  } else if (selectedTier === 'partial') {
+    basePrice = 5000;
+    pricePerGuest = 18;
+  } else if (selectedTier === 'full') {
+    basePrice = 8500;
+    pricePerGuest = 25;
+  }
+
+  let multiplier = 1.0;
+  if (selectedLocation === 'destination') {
+    multiplier = 1.4;
+  } else if (selectedLocation === 'elopement') {
+    multiplier = 0.7;
+  }
+
+  const rawEstimate = (basePrice + (guestCount * pricePerGuest)) * multiplier;
+  const lowerRange = Math.round((rawEstimate * 0.9) / 50) * 50;
+  const upperRange = Math.round((rawEstimate * 1.1) / 50) * 50;
+
+  const resultDisplay = document.getElementById('calculator-result');
+  if (resultDisplay) {
+    resultDisplay.innerText = `$${lowerRange.toLocaleString()} - $${upperRange.toLocaleString()}`;
+  }
+}
+
+// Portfolio Category Filter
+function filterPortfolio(category) {
+  const buttons = document.querySelectorAll('.portfolio-filter-btn');
+  buttons.forEach(btn => {
+    btn.className = "portfolio-filter-btn px-4 py-2 text-xs font-semibold rounded-full border transition-custom bg-white dark:bg-gray-900 border-gray-150 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:border-primary-500";
+  });
+
+  const activeBtn = document.getElementById(`portfolio-filter-${category}`);
+  if (activeBtn) {
+    activeBtn.className = "portfolio-filter-btn px-4 py-2 text-xs font-semibold rounded-full border transition-custom bg-primary-600 border-primary-600 text-white shadow-sm";
+  }
+
+  const items = document.querySelectorAll('.portfolio-item');
+  items.forEach(item => {
+    if (category === 'all' || item.getAttribute('data-category') === category) {
+      item.classList.remove('hidden');
+    } else {
+      item.classList.add('hidden');
+    }
+  });
+}
+
+// FAQ Accordion Toggle
+function toggleFaq(faqId) {
+  const content = document.getElementById(`faq-content-${faqId}`);
+  const chevron = document.getElementById(`faq-chevron-${faqId}`);
+  
+  if (content && chevron) {
+    const isHidden = content.classList.contains('hidden');
+    
+    document.querySelectorAll('.faq-content').forEach(el => el.classList.add('hidden'));
+    document.querySelectorAll('[id^="faq-chevron-"]').forEach(el => el.classList.remove('rotate-180'));
+
+    if (isHidden) {
+      content.classList.remove('hidden');
+      chevron.classList.add('rotate-180');
+    }
+  }
+}
+
+// Set up calculator event listeners on load
+function initHomepageCalculator() {
+  const slider = document.getElementById('guest-slider');
+  if (slider) {
+    slider.addEventListener('input', updateBudgetCalculator);
+  }
 }
 
 if (document.readyState === 'loading') {
