@@ -1,0 +1,74 @@
+/* Dark mode specific style rules */
+
+.dark {
+  --bg-light: #121210;
+  --bg-card-light: #1A1A18;
+  --text-light-primary: #FAF6F0;
+  --text-light-secondary: #B5B2AC;
+  --border-light: #2E2D2A;
+}
+
+.dark body {
+  background-color: var(--bg-light);
+  color: var(--text-light-primary);
+}
+
+/* Custom styles for dark mode elements */
+.dark input, 
+.dark select, 
+.dark textarea {
+  background-color: #232220;
+  border-color: #383632;
+  color: #FAF6F0;
+}
+
+.dark input:focus, 
+.dark select:focus, 
+.dark textarea:focus {
+  border-color: var(--color-primary-400);
+}
+
+.dark .text-gray-900 {
+  color: #FAF6F0 !important;
+}
+
+.dark .text-gray-700 {
+  color: #D1CDC6 !important;
+}
+
+.dark .text-gray-600 {
+  color: #B5B2AC !important;
+}
+
+.dark .text-gray-500 {
+  color: #928E87 !important;
+}
+
+.dark .bg-white {
+  background-color: #1A1A18 !important;
+}
+
+.dark .bg-gray-50 {
+  background-color: #161614 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #232220 !important;
+}
+
+.dark .border-gray-100,
+.dark .border-gray-200 {
+  border-color: #2E2D2A !important;
+}
+
+/* Skeleton Loading Dark Shimmer */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.dark .skeleton {
+  background: linear-gradient(90deg, #22211F 25%, #2D2C29 50%, #22211F 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}

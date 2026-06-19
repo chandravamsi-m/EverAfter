@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Weddings Portfolio | Ever After Planners</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#FAF6F0',
+              100: '#F3EAE0',
+              200: '#E6D2BF',
+              300: '#D4B69A',
+              400: '#C29B77',
+              500: '#B28259',
+              600: '#9F6E49',
+              700: '#865A3B',
+              800: '#6D482F',
+              900: '#573A27',
+            },
+            gray: {
+              50: '#FAF6F0',
+              100: '#F3EAE0',
+              200: '#E6D2BF',
+              300: '#D4B69A',
+              400: '#A39E93',
+              500: '#858074',
+              600: '#696459',
+              700: '#4F4B41',
+              800: '#2E2D2A',
+              900: '#1A1A18',
+              950: '#121210',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body class="bg-primary-50 dark:bg-gray-950 transition-custom">
+
+  <!-- Public Header Navigation -->
+  <nav class="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 z-50 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-20 items-center gap-4">
+        <!-- Logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a href="../index.html" class="flex items-center gap-1 font-serif text-3xl font-bold tracking-normal text-primary-600 dark:text-primary-400 group">
+            <svg class="h-8 w-8 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="13" r="4.5" />
+              <circle cx="15" cy="13" r="4.5" />
+              <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+            </svg>
+            <span>EverAfter</span>
+          </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <div class="hidden lg:flex items-center space-x-3.5">
+          <div class="relative group">
+            <button class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom flex items-center gap-1">
+              Home
+              <svg class="h-4 w-4 transition-transform group-hover:rotate-180 duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-custom p-2 space-y-1">
+              <a href="../index.html" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/40 hover:text-primary-600 rounded-lg">Home 1</a>
+              <a href="home-2.html" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/40 hover:text-primary-600 rounded-lg">Home 2</a>
+            </div>
+          </div>
+          <a href="about.html" class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom">About</a>
+          <a href="services.html" class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom">Services</a>
+          <a href="portfolio.html" class="text-sm font-bold text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400 pb-1 transition-custom">Portfolio</a>
+          <a href="pricing.html" class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom">Pricing</a>
+          <a href="blog.html" class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom">Blog</a>
+          <a href="contact.html" class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom">Contact</a>
+          
+          <!-- Dashboard Dropdown -->
+          <div class="relative group">
+            <button class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom flex items-center gap-1">
+              Dashboard
+              <svg class="h-4 w-4 transition-transform group-hover:rotate-180 duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="absolute left-0 mt-2 w-48 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-xl shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-custom p-2 space-y-1">
+              <a href="user-dashboard.html" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/40 hover:text-primary-600 rounded-lg">User Dashboard</a>
+              <a href="admin-dashboard.html" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/40 hover:text-primary-600 rounded-lg">Admin Dashboard</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Call To Actions -->
+        <div class="hidden lg:flex items-center space-x-3">
+          <!-- RTL Toggle -->
+          <button class="rtl-toggle p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full" title="Toggle RTL">
+            <span class="text-xs font-bold tracking-widest">RTL</span>
+          </button>
+          <!-- Theme Toggle -->
+          <button class="theme-toggle p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full" title="Toggle theme">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+          <a href="login.html" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-950/20 rounded-xl transition-custom">Login</a>
+          <a href="booking-inquiry.html" class="inline-flex items-center justify-center px-4 py-2 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Book Now</a>
+        </div>
+
+        <!-- Hamburger Icon Mobile -->
+        <div class="lg:hidden flex items-center">
+          <button id="mobile-menu-btn" class="p-2 text-gray-700 dark:text-gray-300 hover:text-primary-600 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </nav>
+
+  <!-- Mobile Drawer Container (Backdrop + Side Drawer) -->
+  <div id="mobile-menu" class="fixed inset-0 z-50 lg:hidden hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div id="mobile-menu-backdrop" class="fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300"></div>
+    
+    <!-- Drawer Panel -->
+    <div id="mobile-menu-panel" class="fixed inset-y-0 right-0 z-50 w-[80vw] max-w-sm bg-white dark:bg-gray-900 h-full shadow-2xl p-6 border-l border-gray-100 dark:border-gray-800">
+      <div class="space-y-6 overflow-y-auto h-full pr-1">
+        <!-- Drawer Header with Logo & Close Button -->
+        <div class="flex items-center justify-between pb-4 border-b border-gray-100 dark:border-gray-800">
+          <div class="flex items-center gap-1 font-serif text-2xl font-bold text-primary-600 dark:text-primary-400">
+            <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="9" cy="13" r="4.5" />
+              <circle cx="15" cy="13" r="4.5" />
+              <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+            </svg>
+            <span>EverAfter</span>
+          </div>
+          <button id="mobile-menu-close-btn" class="p-2 text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Drawer Navigation Links -->
+        <div class="space-y-4">
+          <!-- Home Dropdown inside Mobile Drawer -->
+          <div class="space-y-1">
+            <button class="mobile-drawer-dropdown-btn w-full flex items-center justify-between text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">
+              <span>Home</span>
+              <svg class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="mobile-drawer-dropdown-content hidden mt-2 p-2 bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 rounded-xl space-y-1 shadow-inner">
+              <a href="../index.html" class="block px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">Home 1</a>
+              <a href="home-2.html" class="block px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">Home 2</a>
+            </div>
+          </div>
+          
+          <a href="about.html" class="block text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">About</a>
+          <a href="services.html" class="block text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">Services</a>
+          <a href="portfolio.html" class="block text-base font-bold text-primary-600 dark:text-primary-400">Portfolio</a>
+          <a href="pricing.html" class="block text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">Pricing</a>
+          <a href="blog.html" class="block text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">Blog</a>
+          <a href="contact.html" class="block text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">Contact</a>
+          
+          <!-- Dashboard Dropdown inside Mobile Drawer -->
+          <div class="space-y-1">
+            <button class="mobile-drawer-dropdown-btn w-full flex items-center justify-between text-base font-semibold text-gray-700 dark:text-gray-300 hover:text-primary-600">
+              <span>Dashboard</span>
+              <svg class="h-4 w-4 transition-transform duration-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            <div class="mobile-drawer-dropdown-content hidden mt-2 p-2 bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 rounded-xl space-y-1 shadow-inner">
+              <a href="user-dashboard.html" class="block px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">User Dashboard</a>
+              <a href="admin-dashboard.html" class="block px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">Admin Dashboard</a>
+            </div>
+          </div>
+
+          <!-- Settings -->
+          <div class="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-800">
+            <span class="text-sm font-semibold text-gray-700 dark:text-gray-300">Settings</span>
+            <div class="flex items-center space-x-2">
+              <button class="rtl-toggle p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full" title="Toggle RTL">
+                <span class="text-xs font-bold tracking-widest">RTL</span>
+              </button>
+              <button class="theme-toggle p-2 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-full" title="Toggle theme">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- CTA Buttons -->
+          <div class="flex flex-col space-y-2 pt-2 pb-6">
+            <a href="login.html" class="text-center py-2.5 text-sm font-semibold text-primary-600 dark:text-primary-400 border border-primary-600 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-950/20 rounded-xl transition-custom">Login</a>
+            <a href="booking-inquiry.html" class="text-center py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Title Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-4">
+    <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans">Real Weddings Gallery</span>
+    <h1 class="font-serif text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white">Our Celebration Archive</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Browse through our curated stories of love, detailing themes, color schemes, and layouts.</p>
+  </section>
+
+  <!-- Filter Controls -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-4 mb-12">
+    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary-600 text-white" data-filter="all">All Weddings</button>
+    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300" data-filter="chateau">Chateau</button>
+    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300" data-filter="garden">Garden</button>
+  </div>
+
+  <!-- Portfolio Masonry Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
+    <div class="portfolio-item bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift transition-custom border border-gray-100 dark:border-gray-800" data-category="chateau">
+      <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&q=80&w=600" class="h-64 w-full object-cover">
+      <div class="p-6">
+        <span class="text-xs font-semibold text-primary-600">Chateau Theme</span>
+        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white mt-1">Sophia & Arthur at Belle Chateau</h3>
+        <p class="text-xs text-gray-500 mt-2">A luxurious autumn wedding set in the French countryside with gold accents.</p>
+        <a href="#" class="block mt-4 text-sm font-semibold text-primary-600 hover:text-primary-700">Read Wedding Story &rarr;</a>
+      </div>
+    </div>
+
+    <div class="portfolio-item bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift transition-custom border border-gray-100 dark:border-gray-800" data-category="garden">
+      <img src="https://images.unsplash.com/photo-1519225495810-7517c24403a6?auto=format&fit=crop&q=80&w=600" class="h-64 w-full object-cover">
+      <div class="p-6">
+        <span class="text-xs font-semibold text-primary-600">Garden Theme</span>
+        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white mt-1">Emily & Oliver's Botanical Gala</h3>
+        <p class="text-xs text-gray-500 mt-2">A fresh, spring aesthetic framed by customized eucalyptus arches and fairy lights.</p>
+        <a href="#" class="block mt-4 text-sm font-semibold text-primary-600 hover:text-primary-700">Read Wedding Story &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-[#121210] text-[#B5B2AC] border-t border-[#2E2D2A] pt-16 pb-12 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        
+        <!-- Column 1: Brand Info -->
+        <div class="space-y-4">
+          <a href="../index.html" class="inline-flex items-center gap-1 font-serif text-2xl font-bold tracking-normal text-primary-400 group">
+            <svg class="h-6 w-6 text-primary-400 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="9" cy="13" r="4.5" />
+              <circle cx="15" cy="13" r="4.5" />
+              <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+            </svg>
+            <span class="text-[#FAF6F0]">EverAfter</span>
+          </a>
+          <p class="text-sm text-[#B5B2AC] leading-relaxed">
+            Crafting premium designs, absolute coordination, and seamless timeline solutions for elegant celebrations worldwide.
+          </p>
+          <div class="flex items-center space-x-3 pt-2">
+            <a href="#" class="text-[#B5B2AC] hover:text-primary-400 transition-custom" aria-label="Instagram">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+            </a>
+            <a href="#" class="text-[#B5B2AC] hover:text-primary-400 transition-custom" aria-label="Pinterest">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.41 7.61 11.175-.105-.945-.199-2.4.041-3.486.217-.982 1.4-5.962 1.4-5.962s-.358-.718-.358-1.782c0-1.669.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 01.083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.27 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.622 0 11.988-5.367 11.988-11.987C24.005 5.367 18.639 0 12.017 0z"/></svg>
+            </a>
+            <a href="#" class="text-[#B5B2AC] hover:text-primary-400 transition-custom" aria-label="Facebook">
+              <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Column 2: Explore -->
+        <div class="space-y-4">
+          <div class="font-sans text-xs font-bold text-[#FAF6F0] uppercase tracking-wider">Explore</div>
+          <ul class="space-y-2.5 text-sm text-[#B5B2AC]">
+            <li><a href="about.html" class="hover:text-primary-400 transition-custom">About Studio</a></li>
+            <li><a href="services.html" class="hover:text-primary-400 transition-custom">Planning Tiers</a></li>
+            <li><a href="portfolio.html" class="hover:text-primary-400 transition-custom">Real Weddings</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 3: Resources -->
+        <div class="space-y-4">
+          <div class="font-sans text-xs font-bold text-[#FAF6F0] uppercase tracking-wider">Resources</div>
+          <ul class="space-y-2.5 text-sm text-[#B5B2AC]">
+            <li><a href="contact.html" class="hover:text-primary-400 transition-custom">Contact Studio</a></li>
+            <li><a href="blog.html" class="hover:text-primary-400 transition-custom">Wedding Journal</a></li>
+            <li><a href="pricing.html" class="hover:text-primary-400 transition-custom">Pricing Packages</a></li>
+          </ul>
+        </div>
+        
+        <!-- Column 4: Newsletter -->
+        <div class="space-y-4">
+          <div class="font-sans text-xs font-bold text-[#FAF6F0] uppercase tracking-wider">Newsletter</div>
+          <p class="text-sm text-[#B5B2AC] leading-relaxed">
+            Stay updated with our latest layout styles, guides, and trends.
+          </p>
+          <form class="flex gap-2" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+            <input type="email" placeholder="Email address" required class="flex-1 min-w-0 px-3.5 py-2 text-xs text-[#FAF6F0] bg-[#1A1A18] border border-[#2E2D2A] rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-custom" />
+            <button type="submit" class="px-4 py-2 text-xs font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-lg transition-custom">
+              Join
+            </button>
+          </form>
+        </div>
+
+      </div>
+      
+      <!-- Divider line -->
+      <div class="mt-12 pt-6 border-t border-[#2E2D2A] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-gray-500 text-center sm:text-left">
+        <p>&copy; 2026 EverAfter Wedding Planners. All rights reserved.</p>
+        <div class="flex space-x-6">
+          <a href="#" class="text-gray-500 hover:text-primary-400 transition-custom">Privacy Policy</a>
+          <a href="#" class="text-gray-500 hover:text-primary-400 transition-custom">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+  <script>
+    // Portfolio filtering helper
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.portfolio-item');
+    
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle button active classes
+        filterBtns.forEach(b => {
+          b.classList.remove('bg-primary-600', 'text-white');
+          b.classList.add('bg-white', 'dark:bg-gray-900', 'border', 'border-gray-200', 'dark:border-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        });
+        btn.classList.add('bg-primary-600', 'text-white');
+        btn.classList.remove('bg-white', 'dark:bg-gray-900', 'border', 'border-gray-200', 'dark:border-gray-800', 'text-gray-700', 'dark:text-gray-300');
+        
+        const filterValue = btn.getAttribute('data-filter');
+        items.forEach(item => {
+          if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+            item.classList.remove('hidden');
+          } else {
+            item.classList.add('hidden');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

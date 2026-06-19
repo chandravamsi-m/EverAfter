@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Portal | Wedding Planner & Coordinator</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              50: '#FAF6F0',
+              100: '#F3EAE0',
+              200: '#E6D2BF',
+              300: '#D4B69A',
+              400: '#C29B77',
+              500: '#B28259',
+              600: '#9F6E49',
+              700: '#865A3B',
+              800: '#6D482F',
+              900: '#573A27',
+            },
+            gray: {
+              50: '#FAF6F0',
+              100: '#F3EAE0',
+              200: '#E6D2BF',
+              300: '#D4B69A',
+              400: '#A39E93',
+              500: '#858074',
+              600: '#696459',
+              700: '#4F4B41',
+              800: '#2E2D2A',
+              900: '#1A1A18',
+              950: '#121210',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/dark-mode.css">
+  <link rel="stylesheet" href="../assets/css/rtl.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body id="admin-dashboard-root" class="bg-primary-50 dark:bg-gray-950 min-h-screen flex transition-custom">
+
+  <!-- Sidebar Component -->
+  <aside id="sidebar-drawer" class="fixed inset-y-0 left-0 z-45 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+    <div>
+      <div class="h-16 flex items-center px-6 border-b border-gray-100 dark:border-gray-800">
+        <span class="font-serif text-2xl font-semibold text-primary-600 dark:text-primary-400">Ever After Admin</span>
+      </div>
+      
+      <nav class="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
+        <a href="#" data-target="admin-overview" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+          </svg>
+          Overview
+        </a>
+        <a href="#" data-target="clients" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+          Client Management
+        </a>
+        <a href="#" data-target="vendors" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+          </svg>
+          Vendor Management
+        </a>
+        <a href="#" data-target="bookings" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
+          Booking Management
+        </a>
+        <a href="#" data-target="event-timeline" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Master Timeline
+        </a>
+        <a href="#" data-target="content-management" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          Content (Portfolio)
+        </a>
+        <a href="#" data-target="payments" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16v1M10 11h4" />
+          </svg>
+          Payments & Invoices
+        </a>
+        <a href="#" data-target="reports" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+          </svg>
+          Reports & Analytics
+        </a>
+      </nav>
+    </div>
+
+    <div class="p-4 border-t border-gray-100 dark:border-gray-800">
+      <a href="#" data-target="settings" class="sidebar-link flex items-center px-4 py-2.5 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 mb-1 transition-custom">
+        Settings
+      </a>
+      <a href="../index.html" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-custom">
+        Logout
+      </a>
+    </div>
+  </aside>
+
+  <!-- Main Content Grid -->
+  <div class="flex-1 lg:pl-64 flex flex-col min-w-0">
+    <header class="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 sticky top-0 z-40">
+      <div class="flex items-center">
+        <button id="toggle-sidebar-btn" class="lg:hidden text-gray-600 dark:text-gray-400 hover:text-gray-900 focus:outline-none">
+          <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="flex items-center space-x-4">
+        <button class="rtl-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400" title="Toggle RTL">
+          <span class="text-xs font-bold">RTL</span>
+        </button>
+        <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400" title="Toggle theme">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+          </svg>
+        </button>
+        <div class="flex items-center">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=100" alt="Admin Avatar" class="h-8 w-8 rounded-full border border-primary-500">
+          <span class="ml-2 hidden sm:block text-sm font-semibold text-gray-700 dark:text-gray-300">Sophia Sterling</span>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1 p-6 overflow-y-auto">
+
+      <!-- SECTION 1: OVERVIEW -->
+      <section id="admin-overview" class="dashboard-section space-y-6">
+        <div>
+          <h1 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Planner Overview Dashboard</h1>
+          <p class="text-sm text-gray-600 dark:text-gray-400">Total wedding portfolios and operations registry summary.</p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+            <div class="text-sm font-medium text-gray-500">Active Couples</div>
+            <div id="stat-active-clients" class="mt-2 text-3xl font-bold text-gray-950 dark:text-white">18</div>
+            <div class="mt-1 text-xs text-green-600">+2 new this week</div>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+            <div class="text-sm font-medium text-gray-500">Upcoming Weddings</div>
+            <div class="mt-2 text-3xl font-bold text-gray-950 dark:text-white">8</div>
+            <div class="mt-1 text-xs text-primary-600">Next 60 Days</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: CLIENT MANAGEMENT -->
+      <section id="clients" class="dashboard-section hidden space-y-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Active Couple Accounts</h2>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Add, view, and update client registry files.</p>
+          </div>
+          <button onclick="document.getElementById('add-client-panel').classList.toggle('hidden')" class="px-5 py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Add Client Profile</button>
+        </div>
+
+        <div id="add-client-panel" class="hidden bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+          <form id="add-client-form" class="grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase">Couple Names</label>
+              <input id="client-couple" type="text" required placeholder="Emma & Liam" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase">Wedding Date</label>
+              <input id="client-date" type="date" required class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase">Estimated Budget ($)</label>
+              <input id="client-budget" type="number" required placeholder="45000" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase">Planning Stage</label>
+              <select id="client-stage" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
+                <option value="Initial Planning">Initial Planning</option>
+                <option value="Negotiation">Negotiation</option>
+              </select>
+            </div>
+            <div class="sm:col-span-4 text-right">
+              <button type="submit" class="px-5 py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl">Save Profile</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-gray-50 dark:bg-gray-800/40 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">
+                <th class="py-3 px-4">Couple</th>
+                <th class="py-3 px-4">Wedding Date</th>
+                <th class="py-3 px-4">Budget</th>
+                <th class="py-3 px-4">Planning Stage</th>
+              </tr>
+            </thead>
+            <tbody id="client-list-table">
+              <tr class="border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300">
+                <td class="py-3 px-4 font-semibold text-gray-900 dark:text-white">Alex & Taylor</td>
+                <td class="py-3 px-4">Nov 08, 2026</td>
+                <td class="py-3 px-4">$50,000</td>
+                <td class="py-3 px-4">Mid-Stage</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECTION 3: VENDOR MANAGEMENT -->
+      <section id="vendors" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Vendor Directory & Partners</h2>
+        </div>
+      </section>
+
+      <!-- SECTION 4: BOOKING MANAGEMENT -->
+      <section id="bookings" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Bookings registry</h2>
+        </div>
+      </section>
+
+      <!-- SECTION 5: MASTER TIMELINE -->
+      <section id="event-timeline" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Planner Master Calendar</h2>
+        </div>
+      </section>
+
+      <!-- SECTION 6: CONTENT MANAGEMENT -->
+      <section id="content-management" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Content & Showcases</h2>
+        </div>
+      </section>
+
+      <!-- SECTION 7: PAYMENTS -->
+      <section id="payments" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Payments & Invoicing</h2>
+        </div>
+      </section>
+
+      <!-- SECTION 8: REPORTS -->
+      <section id="reports" class="dashboard-section hidden space-y-6">
+        <div>
+          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Business reports & Analytics</h2>
+        </div>
+        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
+          <div class="h-80">
+            <canvas id="adminRevenueChart"></canvas>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+/* RTL Support Overrides */
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .ml-auto {
+  margin-right: auto;
+  margin-left: 0;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+[dir="rtl"] .left-0 {
+  right: 0;
+  left: auto;
+}
+
+[dir="rtl"] .right-0 {
+  left: 0;
+  right: auto;
+}
+
+[dir="rtl"] .translate-x-full {
+  transform: translateX(-100%);
+}
+
+[dir="rtl"] .-translate-x-full {
+  transform: translateX(100%);
+}
+
+/* Adjusting caret and icons alignment */
+[dir="rtl"] .chevron-icon {
+  transform: scaleX(-1);
+}
