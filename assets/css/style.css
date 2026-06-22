@@ -73,3 +73,167 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 #mobile-menu-panel.translate-x-0 {
   transform: translateX(0) !important;
 }
+
+/* Transparent Header Styling */
+.navbar-transparent-init,
+.dark .navbar-transparent-init {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  box-shadow: none !important;
+}
+
+.navbar-transparent-init .logo-text,
+.navbar-transparent-init .logo-svg,
+.navbar-transparent-init .nav-link-item,
+.navbar-transparent-init .nav-toggle-btn,
+.navbar-transparent-init .login-btn-custom,
+.navbar-transparent-init #mobile-menu-btn,
+.dark .navbar-transparent-init .logo-text,
+.dark .navbar-transparent-init .logo-svg,
+.dark .navbar-transparent-init .nav-link-item,
+.dark .navbar-transparent-init .nav-toggle-btn,
+.dark .navbar-transparent-init .login-btn-custom,
+.dark .navbar-transparent-init #mobile-menu-btn {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.navbar-transparent-init .nav-link-item:hover,
+.navbar-transparent-init .nav-toggle-btn:hover,
+.navbar-transparent-init #mobile-menu-btn:hover,
+.dark .navbar-transparent-init .nav-link-item:hover,
+.dark .navbar-transparent-init .nav-toggle-btn:hover,
+.dark .navbar-transparent-init #mobile-menu-btn:hover {
+  color: #ffffff !important;
+}
+
+.navbar-transparent-init .logo-text:hover,
+.dark .navbar-transparent-init .logo-text:hover {
+  color: #ffffff !important;
+}
+
+.navbar-transparent-init .login-btn-custom,
+.dark .navbar-transparent-init .login-btn-custom {
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.navbar-transparent-init .login-btn-custom:hover,
+.dark .navbar-transparent-init .login-btn-custom:hover {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Ensure active nav link indicator matches transparent mode */
+.navbar-transparent-init .nav-link-item.border-b-2,
+.dark .navbar-transparent-init .nav-link-item.border-b-2 {
+  border-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Ensure SVGs and custom toggle icons inherit the light color */
+.navbar-transparent-init .nav-toggle-btn svg,
+.navbar-transparent-init .nav-link-item svg,
+.navbar-transparent-init #mobile-menu-btn svg,
+.dark .navbar-transparent-init .nav-toggle-btn svg,
+.dark .navbar-transparent-init .nav-link-item svg,
+.dark .navbar-transparent-init #mobile-menu-btn svg {
+  color: rgba(255, 255, 255, 0.9) !important;
+  stroke: currentColor !important;
+}
+
+.navbar-transparent-init .nav-toggle-btn:hover svg,
+.navbar-transparent-init .nav-link-item:hover svg,
+.navbar-transparent-init #mobile-menu-btn:hover svg,
+.dark .navbar-transparent-init .nav-toggle-btn:hover svg,
+.dark .navbar-transparent-init .nav-link-item:hover svg,
+.dark .navbar-transparent-init #mobile-menu-btn:hover svg {
+  color: #ffffff !important;
+}
+
+/* Editorial Homepage Layout Utilities */
+.editorial-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 2rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-card img {
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.editorial-card:hover img {
+  transform: scale(1.04);
+}
+
+.border-editorial {
+  border-color: rgba(178, 130, 89, 0.15) !important;
+}
+
+.dark .border-editorial {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Custom premium range slider */
+input[type="range"].slider-premium {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #f3eae0;
+  border-radius: 9999px;
+  outline: none;
+  transition: background 0.3s;
+}
+
+.dark input[type="range"].slider-premium {
+  background: #2e2d2a;
+}
+
+input[type="range"].slider-premium::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #b28259;
+  cursor: pointer;
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(178, 130, 89, 0.3);
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+.dark input[type="range"].slider-premium::-webkit-slider-thumb {
+  border: 3px solid #1a1a18;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  background: #c29b77;
+}
+
+input[type="range"].slider-premium::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+  background: #9f6e49;
+}
+
+.dark input[type="range"].slider-premium::-webkit-slider-thumb:hover {
+  background: #d4b69a;
+}
+
+input[type="range"].slider-premium::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  background: #b28259;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(178, 130, 89, 0.3);
+  transition: transform 0.15s, background-color 0.15s;
+}
+
+.dark input[type="range"].slider-premium::-moz-range-thumb {
+  border: 3px solid #1a1a18;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  background: #c29b77;
+}
+
+
+

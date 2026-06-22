@@ -51,7 +51,7 @@
   <!-- Public Header Navigation -->
   <nav class="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 z-50 transition-custom">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-20 items-center gap-4">
+      <div class="flex justify-between h-16 items-center gap-4">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <a href="../index.html" class="flex items-center gap-1 font-serif text-3xl font-bold tracking-normal text-primary-600 dark:text-primary-400 group">
@@ -65,7 +65,7 @@
         </div>
         
         <!-- Navigation Links -->
-        <div class="hidden lg:flex items-center space-x-3.5">
+        <div class="hidden lg:flex items-center space-x-6">
           <div class="relative group">
             <button class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom flex items-center gap-1">
               Home
@@ -217,38 +217,253 @@
   </div>
 
   <!-- Title Section -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-4">
-    <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans">Real Weddings Gallery</span>
-    <h1 class="font-serif text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white">Our Celebration Archive</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Browse through our curated stories of love, detailing themes, color schemes, and layouts.</p>
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans block">Real Weddings Gallery</span>
+      <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-wide text-gray-900 dark:text-white leading-tight">
+        Our Celebration Archive
+      </h1>
+      <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-sans">
+        Browse through our curated stories of love, detailing themes, color schemes, and layouts realized across the globe.
+      </p>
+    </div>
   </section>
 
-  <!-- Filter Controls -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-center space-x-4 mb-12">
-    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-primary-600 text-white" data-filter="all">All Weddings</button>
-    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300" data-filter="chateau">Chateau</button>
-    <button class="filter-btn px-4 py-2 text-sm font-semibold rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300" data-filter="garden">Garden</button>
-  </div>
+  <!-- Filter & Portfolio Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Filter Controls -->
+      <div class="flex flex-wrap justify-center gap-3 mb-8">
+        <button class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-custom bg-primary-600 text-white shadow-sm" data-filter="all">All Weddings</button>
+        <button class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-custom bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-950/20" data-filter="chateau">Chateau</button>
+        <button class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-custom bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-950/20" data-filter="garden">Garden</button>
+        <button class="filter-btn px-5 py-2 text-xs uppercase tracking-wider font-bold rounded-lg transition-custom bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 hover:bg-primary-50 dark:hover:bg-primary-950/20" data-filter="coastline">Coastline</button>
+      </div>
 
-  <!-- Portfolio Masonry Grid -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-    <div class="portfolio-item bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift transition-custom border border-gray-100 dark:border-gray-800" data-category="chateau">
-      <img src="../assets/images/portfolio_estate.png" class="h-64 w-full object-cover">
-      <div class="p-6">
-        <span class="text-xs font-semibold text-primary-600">Chateau Theme</span>
-        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white mt-1">Sophia & Arthur at Belle Chateau</h3>
-        <p class="text-xs text-gray-500 mt-2">A luxurious autumn wedding set in the French countryside with gold accents.</p>
-        <a href="#" class="block mt-4 text-sm font-semibold text-primary-600 hover:text-primary-700">Read Wedding Story &rarr;</a>
+      <!-- Portfolio Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <!-- Item 1 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="chateau">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/portfolio_estate.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Sophia & Arthur's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Chateau Theme &mdash; Loire Valley, France</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Sophia & Arthur at Belle Chateau</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A luxurious autumn wedding set in the French countryside with gold accents, crystal chandeliers, and grand banquet tables.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="garden">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/portfolio_vineyard.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Emily & Oliver's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Garden Theme &mdash; Florence, Italy</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Emily & Oliver's Botanical Gala</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A fresh, spring aesthetic framed by customized eucalyptus arches, soft candle lighting, and local estate vineyard settings.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="coastline">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/portfolio_cliffside.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Elena & Marcus's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Coastline Theme &mdash; Santorini, Greece</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Elena & Marcus's Santorini Escape</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A minimalist cliffside sunset celebration overlooking the Aegean Sea, styled with white roses and structural symmetry.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="garden">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/couple1.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Clara & Julian's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Garden Theme &mdash; Siena, Italy</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Clara & Julian's Vineyard Vows</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              An intimate multi-day Tuscan vineyard gathering under twinkling fairy lights, olive branches, and rustic wooden tables.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Item 5 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="chateau">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/couple2.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Charlotte & Henry's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Chateau Theme &mdash; Provence, France</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Charlotte & Henry's Glasshouse Gala</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A modern glasshouse ceremony balancing industrial steel frames with soft blush gardenias, white drapery, and lavender accents.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Item 6 -->
+        <div class="portfolio-item group bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/80 transition-custom" data-category="coastline">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/couple3.png" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Amara & Dev's Wedding">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans block">Coastline Theme &mdash; Big Sur, California</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">Amara & Dev's Cliffside Pavilion</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A vibrant coastal deck setup featuring ocean breezes, cascading pampas grass, warm terracotta tones, and rustic textures.
+            </p>
+            <a href="#" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700 pt-1">Read Wedding Story &rarr;</a>
+          </div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="portfolio-item bg-white dark:bg-gray-900 rounded-3xl overflow-hidden shadow-sm hover-lift transition-custom border border-gray-100 dark:border-gray-800" data-category="garden">
-      <img src="../assets/images/portfolio_vineyard.png" class="h-64 w-full object-cover">
-      <div class="p-6">
-        <span class="text-xs font-semibold text-primary-600">Garden Theme</span>
-        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white mt-1">Emily & Oliver's Botanical Gala</h3>
-        <p class="text-xs text-gray-500 mt-2">A fresh, spring aesthetic framed by customized eucalyptus arches and fairy lights.</p>
-        <a href="#" class="block mt-4 text-sm font-semibold text-primary-600 hover:text-primary-700">Read Wedding Story &rarr;</a>
+  <!-- Behind the Design (Workflow Process) Section -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Behind the Design</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Our Creative Process</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-sans max-w-lg mx-auto">
+          A behind-the-scenes look at how our lead design studio translates your private narrative into a fully realized physical celebration.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Step 1 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 transition-custom">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/step_inspiration.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Inspiration Sourcing">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-widest block">Phase 01</span>
+            <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary-600">Inspiration Board</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+              Sourcing aesthetic fabrics, color swatches, and lighting references to set the visual tone.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 transition-custom">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/step_design.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Spatial Geometry">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-widest block">Phase 02</span>
+            <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary-600">Spatial Geometry</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+              Drafting architectural blueprints, table layouts, and structural geometries for the venue space.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 transition-custom">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/step_vetting.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Supplier Vetting">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-widest block">Phase 03</span>
+            <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary-600">Supplier Vetting</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+              Curating and contracting top-tier florists, lighting designers, and local culinary artisans.
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 transition-custom">
+          <div class="aspect-[4/3] overflow-hidden relative">
+            <img src="../assets/images/step_execution.png" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="On-Site Execution">
+          </div>
+          <div class="p-6 space-y-2 text-left">
+            <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-widest block">Phase 04</span>
+            <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white transition-colors group-hover:text-primary-600">On-Site Execution</h3>
+            <p class="text-xs text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+              Managing minute-by-minute schedules, vendor loads, and cue sheets quietly in the background.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Aesthetic Standards (Design Philosophy) Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans">Aesthetic Standards</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Our Editorial Framework</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+        <!-- Pillar 1 -->
+        <div class="space-y-3">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Standard 01</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Architectural Harmony</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            We sketch custom tablescapes and event structures to respect the venue's lines, ensuring clean lines and balanced frame geometries.
+          </p>
+        </div>
+        <!-- Pillar 2 -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-150 dark:border-gray-800/60 pt-6 md:pt-0 md:pl-10">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Standard 02</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Chromatic Direction</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            Custom color-swatching and meticulous botanical selections designed to mirror the natural geography and light of each local site.
+          </p>
+        </div>
+        <!-- Pillar 3 -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-150 dark:border-gray-800/60 pt-6 md:pt-0 md:pl-10">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Standard 03</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Temporal Choreography</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            Minute-by-minute day-of schedules distributed dynamically to vendor networks to coordinate audio, visual, and catering changes seamlessly.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial CTA Section -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Let's Design Together</span>
+        <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          Ready to Begin Your <span class="italic font-normal">EverAfter</span> Story?
+        </h2>
+        <p class="text-base text-gray-600 dark:text-gray-400 font-sans leading-relaxed max-w-2xl mx-auto">
+          Secure a private consultation with our lead producers to map out your aesthetic vision, day-of choreography, and bespoke logistics.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+        <a href="booking-inquiry.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom hover-lift shadow-md hover:shadow-lg text-center">
+          Book Private Consultation
+        </a>
+        <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom hover-lift text-center">
+          General Inquiry &rarr;
+        </a>
       </div>
     </div>
   </section>

@@ -449,11 +449,31 @@ function initAdminDashboardFeatures() {
   }
 }
 
+// Navbar Scroll Transition
+function initNavbarScroll() {
+  const nav = document.getElementById('main-nav');
+  if (!nav) return;
+
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      nav.classList.remove('navbar-transparent-init');
+      nav.classList.add('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'border-b', 'border-gray-100', 'dark:border-gray-800', 'shadow-sm');
+    } else {
+      nav.classList.add('navbar-transparent-init');
+      nav.classList.remove('bg-white/80', 'dark:bg-gray-900/80', 'backdrop-blur-md', 'border-b', 'border-gray-100', 'dark:border-gray-800', 'shadow-sm');
+    }
+  }
+
+  handleScroll();
+  window.addEventListener('scroll', handleScroll);
+}
+
 // Document Load Init
 function init() {
   initTheme();
   initDirection();
   initMobileMenu();
+  initNavbarScroll();
   
   // Attach general listeners
   const themeToggles = document.querySelectorAll('.theme-toggle');
@@ -505,12 +525,12 @@ function switchTimelineStep(stepNum) {
 
   const buttons = document.querySelectorAll('.timeline-tab-btn');
   buttons.forEach(btn => {
-    btn.className = "timeline-tab-btn px-6 py-4 rounded-2xl font-sans text-sm font-bold transition-custom border bg-gray-50 dark:bg-gray-800/40 border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/20";
+    btn.className = "timeline-tab-btn px-4 py-2.5 rounded-xl font-sans text-xs sm:text-sm font-bold transition-custom border bg-gray-50 dark:bg-gray-800/40 border-gray-100 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-primary-50 dark:hover:bg-primary-950/20";
   });
 
   const activeButton = document.getElementById(`timeline-btn-${stepNum}`);
   if (activeButton) {
-    activeButton.className = "timeline-tab-btn px-6 py-4 rounded-2xl font-sans text-sm font-bold transition-custom border bg-primary-600 border-primary-600 text-white shadow-md";
+    activeButton.className = "timeline-tab-btn px-4 py-2.5 rounded-xl font-sans text-xs sm:text-sm font-bold transition-custom border bg-primary-600 border-primary-600 text-white shadow-md";
   }
 }
 
@@ -522,12 +542,14 @@ function selectTier(tierId) {
   selectedTier = tierId;
   const buttons = document.querySelectorAll('.tier-card-btn');
   buttons.forEach(btn => {
-    btn.className = "tier-card-btn p-4 border rounded-2xl text-left transition-custom bg-white dark:bg-gray-900 border-gray-150 dark:border-gray-800 hover:border-primary-500";
+    btn.classList.remove('bg-primary-50', 'dark:bg-primary-950/20', 'border-primary-500', 'ring-2', 'ring-primary-500/20', 'text-primary-600', 'font-bold');
+    btn.classList.add('bg-white', 'dark:bg-gray-900', 'border-gray-150', 'dark:border-gray-800', 'hover:border-primary-500');
   });
 
   const activeBtn = document.getElementById(`tier-btn-${tierId}`);
   if (activeBtn) {
-    activeBtn.className = "tier-card-btn p-4 border rounded-2xl text-left transition-custom bg-primary-50 dark:bg-primary-950/20 border-primary-500 ring-2 ring-primary-500/20";
+    activeBtn.classList.remove('bg-white', 'dark:bg-gray-900', 'border-gray-150', 'dark:border-gray-800');
+    activeBtn.classList.add('bg-primary-50', 'dark:bg-primary-950/20', 'border-primary-500', 'ring-2', 'ring-primary-500/20', 'text-primary-600', 'font-bold');
   }
   updateBudgetCalculator();
 }
@@ -536,12 +558,14 @@ function selectLocation(locId) {
   selectedLocation = locId;
   const buttons = document.querySelectorAll('.location-card-btn');
   buttons.forEach(btn => {
-    btn.className = "location-card-btn p-4 border rounded-2xl text-left transition-custom bg-white dark:bg-gray-900 border-gray-150 dark:border-gray-800 hover:border-primary-500";
+    btn.classList.remove('bg-primary-50', 'dark:bg-primary-950/20', 'border-primary-500', 'ring-2', 'ring-primary-500/20', 'text-primary-600', 'font-bold');
+    btn.classList.add('bg-white', 'dark:bg-gray-900', 'border-gray-150', 'dark:border-gray-800', 'hover:border-primary-500');
   });
 
   const activeBtn = document.getElementById(`location-btn-${locId}`);
   if (activeBtn) {
-    activeBtn.className = "location-card-btn p-4 border rounded-2xl text-left transition-custom bg-primary-50 dark:bg-primary-950/20 border-primary-500 ring-2 ring-primary-500/20";
+    activeBtn.classList.remove('bg-white', 'dark:bg-gray-900', 'border-gray-150', 'dark:border-gray-800');
+    activeBtn.classList.add('bg-primary-50', 'dark:bg-primary-950/20', 'border-primary-500', 'ring-2', 'ring-primary-500/20', 'text-primary-600', 'font-bold');
   }
   updateBudgetCalculator();
 }

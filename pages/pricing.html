@@ -51,7 +51,7 @@
   <!-- Public Header Navigation -->
   <nav class="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 z-50 transition-custom">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-20 items-center gap-4">
+      <div class="flex justify-between h-16 items-center gap-4">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <a href="../index.html" class="flex items-center gap-1 font-serif text-3xl font-bold tracking-normal text-primary-600 dark:text-primary-400 group">
@@ -65,7 +65,7 @@
         </div>
         
         <!-- Navigation Links -->
-        <div class="hidden lg:flex items-center space-x-3.5">
+        <div class="hidden lg:flex items-center space-x-6">
           <div class="relative group">
             <button class="text-sm font-medium text-gray-500 hover:text-primary-600 dark:text-gray-400 dark:hover:text-primary-300 transition-custom flex items-center gap-1">
               Home
@@ -217,62 +217,285 @@
   </div>
 
   <!-- Title Banner -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-4">
-    <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans">Transparent Pricing</span>
-    <h1 class="font-serif text-4xl sm:text-6xl font-bold text-gray-900 dark:text-white">Planning Investment Packages</h1>
-    <p class="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Select the support level that matches your timeline and planning progress.</p>
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-12 sm:py-20 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans block">Transparent Pricing</span>
+      <h1 class="font-serif text-4xl sm:text-5xl md:text-6xl font-bold tracking-wide text-gray-900 dark:text-white leading-tight">
+        Planning Investment Packages
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-sans">
+        Select the support level that matches your timeline and planning progress, backed by transparent pricing structures.
+      </p>
+    </div>
   </section>
 
   <!-- 3-Card Layout Comparison -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-    
-    <!-- Tier 1 -->
-    <div class="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between space-y-6">
-      <div>
-        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Day-Of Coordination</h3>
-        <p class="text-xs text-gray-500 mt-1">Orchestration support for the wedding day</p>
-        <div class="mt-4 text-4xl font-bold text-gray-900 dark:text-white">$1,800</div>
-      </div>
-      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-3">
-        <li>✔ Timeline creation & review</li>
-        <li>✔ Rehearsal supervision</li>
-        <li>✔ 8 hours on-site day-of support</li>
-      </ul>
-      <a href="booking-inquiry.html" class="w-full text-center py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-xl font-semibold transition-custom">Inquire Package</a>
-    </div>
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-12 sm:py-20 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-md lg:max-w-none mx-auto">
+        
+        <!-- Tier 1 -->
+        <div class="bg-white dark:bg-gray-900 rounded-3xl px-8 py-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between space-y-6 hover-lift transition-custom">
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans">Essential</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Day-Of Coordination</h3>
+            <p class="text-xs text-gray-500 font-sans">Orchestration support starting 6 weeks prior to your wedding day.</p>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-850">
+              <span class="text-4xl font-bold text-gray-900 dark:text-white font-sans">$1,800</span>
+              <span class="text-xs text-gray-400 font-sans">USD</span>
+            </div>
+            <ul class="text-sm text-gray-600 dark:text-gray-455 space-y-3 pt-4 font-sans">
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Timeline creation & review
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Rehearsal supervision (2 hours)
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                12 hours of on-site day-of support
+              </li>
+              <li class="flex items-center gap-2.5 text-gray-300 dark:text-gray-700 line-through">
+                Vendor sourcing & contracts
+              </li>
+            </ul>
+          </div>
+          <a href="booking-inquiry.html" class="w-full text-center py-3.5 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-950/20 rounded-xl font-bold text-xs uppercase tracking-widest transition-custom">Inquire Package</a>
+        </div>
 
-    <!-- Tier 2 (Popular - Highlighted) -->
-    <div class="bg-white dark:bg-gray-900 rounded-3xl p-8 border-2 border-primary-500 shadow-lg flex flex-col justify-between space-y-6 relative">
-      <span class="absolute top-0 right-6 transform -translate-y-1/2 bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
-      <div>
-        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Partial Planning</h3>
-        <p class="text-xs text-gray-500 mt-1">Design assistance + vendor coordination</p>
-        <div class="mt-4 text-4xl font-bold text-gray-900 dark:text-white">$3,500</div>
-      </div>
-      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-3">
-        <li>✔ Includes all Day-of features</li>
-        <li>✔ 3 customized moodboards</li>
-        <li>✔ Vendor matching & communication</li>
-      </ul>
-      <a href="booking-inquiry.html" class="w-full text-center py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-semibold transition-custom">Inquire Package</a>
-    </div>
+        <!-- Tier 2 (Popular - Highlighted) -->
+        <div class="bg-white dark:bg-gray-900 rounded-3xl px-8 py-6 border-2 border-primary-500 shadow-md flex flex-col justify-between space-y-6 relative hover-lift transition-custom">
+          <span class="absolute top-0 right-6 transform -translate-y-1/2 bg-primary-600 text-white text-xs font-semibold px-3 py-1 rounded-full uppercase tracking-wider">Most Popular</span>
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans">Signature</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Partial Art Direction</h3>
+            <p class="text-xs text-gray-500 font-sans">Design direction, layout curation, and vendor handoff 3 months prior.</p>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-850">
+              <span class="text-4xl font-bold text-gray-900 dark:text-white font-sans">$3,500</span>
+              <span class="text-xs text-gray-400 font-sans">USD</span>
+            </div>
+            <ul class="text-sm text-gray-600 dark:text-gray-455 space-y-3 pt-4 font-sans">
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Includes all Day-of features
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                3 customized moodboards
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Vendor matching & layout details
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Communication handoff 3 months prior
+              </li>
+            </ul>
+          </div>
+          <a href="booking-inquiry.html" class="w-full text-center py-3.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-bold text-xs uppercase tracking-widest transition-custom">Inquire Package</a>
+        </div>
 
-    <!-- Tier 3 -->
-    <div class="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between space-y-6">
-      <div>
-        <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Full Service Planning</h3>
-        <p class="text-xs text-gray-500 mt-1">Complete conceptualization and log management</p>
-        <div class="mt-4 text-4xl font-bold text-gray-900 dark:text-white">$5,500</div>
-      </div>
-      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-3">
-        <li>✔ Complete budget & expense log</li>
-        <li>✔ Infinite site visits & layouts</li>
-        <li>✔ Day-of styling & design orchestration</li>
-      </ul>
-      <a href="booking-inquiry.html" class="w-full text-center py-3 border border-primary-600 text-primary-600 hover:bg-primary-50 rounded-xl font-semibold transition-custom">Inquire Package</a>
-    </div>
+        <!-- Tier 3 -->
+        <div class="bg-white dark:bg-gray-900 rounded-3xl px-8 py-6 border border-gray-100 dark:border-gray-800 shadow-sm flex flex-col justify-between space-y-6 hover-lift transition-custom">
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-widest font-sans">Bespoke</span>
+            <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Full Service Planning</h3>
+            <p class="text-xs text-gray-500 font-sans">End-to-end management, location vetting, layout blueprinting.</p>
+            <div class="pt-4 border-t border-gray-100 dark:border-gray-850">
+              <span class="text-4xl font-bold text-gray-900 dark:text-white font-sans">$5,500</span>
+              <span class="text-xs text-gray-400 font-sans">USD</span>
+            </div>
+            <ul class="text-sm text-gray-600 dark:text-gray-455 space-y-3 pt-4 font-sans">
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Complete budget & expense tracking
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Infinite site visits & custom layouts
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Day-of styling & floral setups
+              </li>
+              <li class="flex items-center gap-2.5">
+                <svg class="h-4 w-4 text-primary-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                Multi-coordinator timeline checks
+              </li>
+            </ul>
+          </div>
+          <a href="booking-inquiry.html" class="w-full text-center py-3.5 border border-primary-600 text-primary-600 dark:text-primary-400 dark:border-primary-400 hover:bg-primary-50 dark:hover:bg-primary-950/20 rounded-xl font-bold text-xs uppercase tracking-widest transition-custom">Inquire Package</a>
+        </div>
 
+      </div>
+    </div>
   </section>
+
+  <!-- Curated Add-Ons Section -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-12 sm:py-20 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans">A La Carte Options</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Curated Add-On Services</h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-md lg:max-w-none mx-auto">
+        <!-- Add-on 1 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 p-6 sm:p-8 space-y-3 transition-custom text-left">
+          <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-wider block">Add-On 01</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Global Estate Scouting</h3>
+          <p class="text-xs text-gray-655 dark:text-gray-400 font-sans leading-relaxed">
+            Scouting and vetting private villas or destination chateaus, handling cross-border permits and local travel schedules.
+          </p>
+          <div class="text-sm font-bold text-primary-600 dark:text-primary-400 pt-2 font-sans">From $750</div>
+        </div>
+
+        <!-- Add-on 2 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 p-6 sm:p-8 space-y-3 transition-custom text-left">
+          <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-wider block">Add-On 02</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Rehearsal Dinner</h3>
+          <p class="text-xs text-gray-655 dark:text-gray-400 font-sans leading-relaxed">
+            Coordination, timeline mapping, design setups, and supplier integration for your welcome dinner or rehearsal.
+          </p>
+          <div class="text-sm font-bold text-primary-600 dark:text-primary-400 pt-2 font-sans">From $1,200</div>
+        </div>
+
+        <!-- Add-on 3 -->
+        <div class="group bg-primary-50/50 dark:bg-gray-950 rounded-3xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800/60 p-6 sm:p-8 space-y-3 transition-custom text-left">
+          <span class="text-xs text-primary-600 dark:text-primary-400 font-sans font-bold uppercase tracking-wider block">Add-On 03</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Farewell Brunch Styling</h3>
+          <p class="text-xs text-gray-655 dark:text-gray-400 font-sans leading-relaxed">
+            Planning, food-station layout design, timelines, and logistics coordinates for the morning-after recovery brunch.
+          </p>
+          <div class="text-sm font-bold text-primary-600 dark:text-primary-400 pt-2 font-sans">From $600</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing FAQ Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-12 sm:py-20 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans">Pricing FAQs</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Investment Intelligence</h2>
+      </div>
+
+      <!-- FAQ Accordions (Clean Line-based) -->
+      <div class="border-t border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800 font-sans">
+        
+        <!-- Accordion 1 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-left focus:outline-none gap-4">
+            <span class="font-serif text-base sm:text-lg font-bold text-gray-900 dark:text-white">Are destination travel expenses included in your pricing packages?</span>
+            <svg id="faq-chevron-1" class="h-5 w-5 text-gray-400 transition-transform duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-1" class="faq-content hidden mt-3 pr-8">
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Travel and lodging costs for our coordinators are calculated separately based on your destination venue region. These options are explicitly detailed in our proposal before contract finalization.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 2 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-left focus:outline-none gap-4">
+            <span class="font-serif text-base sm:text-lg font-bold text-gray-900 dark:text-white">Can we customize any of the packages or add extra coordinates?</span>
+            <svg id="faq-chevron-2" class="h-5 w-5 text-gray-400 transition-transform duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-2" class="faq-content hidden mt-3 pr-8">
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Absolutely. Our three tiers serve as structural bases. During your private consultation, we can build custom quotes, incorporating additional site coordinators, a la carte events, or prolonged styling direction.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 3 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center text-left focus:outline-none gap-4">
+            <span class="font-serif text-base sm:text-lg font-bold text-gray-900 dark:text-white">How do payment milestones work for your design services?</span>
+            <svg id="faq-chevron-3" class="h-5 w-5 text-gray-400 transition-transform duration-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-3" class="faq-content hidden mt-3 pr-8">
+            <p class="text-xs sm:text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We require a 30% non-refundable retainer upon contract signing to lock in your date. The remaining balance is split into two equal milestones: one due at the 6-month planning mark, and the final due 30 days before the wedding.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial CTA Section -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Let's Design Together</span>
+        <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          Ready to Begin Your <span class="italic font-normal">EverAfter</span> Story?
+        </h2>
+        <p class="text-base text-gray-600 dark:text-gray-400 font-sans leading-relaxed max-w-2xl mx-auto">
+          Secure a private consultation with our lead producers to map out your aesthetic vision, day-of choreography, and bespoke logistics.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+        <a href="booking-inquiry.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom hover-lift shadow-md hover:shadow-lg text-center">
+          Book Private Consultation
+        </a>
+        <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom hover-lift text-center">
+          General Inquiry &rarr;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Accordion Script -->
+  <script>
+    function toggleFaq(index) {
+      const content = document.getElementById(`faq-content-${index}`);
+      const chevron = document.getElementById(`faq-chevron-${index}`);
+      
+      if (content.classList.contains('hidden')) {
+        content.classList.remove('hidden');
+        chevron.classList.add('rotate-180');
+      } else {
+        content.classList.add('hidden');
+        chevron.classList.remove('rotate-180');
+      }
+    }
+  </script>
 
   <!-- Footer -->
   <footer class="bg-[#121210] text-[#B5B2AC] border-t border-[#2E2D2A] pt-16 pb-12 transition-custom">

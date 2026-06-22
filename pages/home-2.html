@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Wedding Design | Ever After</title>
+  <title>Premium Editorial Wedding Design | EverAfter</title>
+  <meta name="description" content="Explore EverAfter's editorial-style planning homepage. We design and orchestrate bespoke, luxury celebrations globally.">
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -23,6 +24,7 @@
               700: '#865A3B',
               800: '#6D482F',
               900: '#573A27',
+              950: '#2C1D13',
             },
             gray: {
               50: '#FAF6F0',
@@ -51,7 +53,7 @@
   <!-- Public Header Navigation -->
   <nav class="sticky top-0 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-100 dark:border-gray-800 z-50 transition-custom">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-20 items-center gap-4">
+      <div class="flex justify-between h-16 items-center gap-4">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
           <a href="../index.html" class="flex items-center gap-1 font-serif text-3xl font-bold tracking-normal text-primary-600 dark:text-primary-400 group">
@@ -65,7 +67,7 @@
         </div>
         
         <!-- Navigation Links -->
-        <div class="hidden lg:flex items-center space-x-3.5">
+        <div class="hidden lg:flex items-center space-x-6">
           <div class="relative group">
             <button class="text-sm font-bold text-primary-600 dark:text-primary-400 border-b-2 border-primary-600 dark:border-primary-400 pb-1 transition-custom flex items-center gap-1">
               Home
@@ -165,7 +167,7 @@
               </svg>
             </button>
             <div class="mobile-drawer-dropdown-content mt-2 p-2 bg-gray-50 dark:bg-gray-800/40 border border-gray-100 dark:border-gray-800 rounded-xl space-y-1 shadow-inner">
-              <a href="../index.html" class="block px-4 py-2 text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">Home 1</a>
+              <a href="../index.html" class="block px-4 py-2 text-sm text-gray-600 dark:text-gray-400 hover:text-primary-600 hover:bg-gray-100/50 dark:hover:bg-gray-800/50 rounded-lg">Home 1</a>
               <a href="home-2.html" class="block px-4 py-2 text-sm font-bold text-primary-600 bg-primary-50 dark:bg-primary-950/40 rounded-lg">Home 2</a>
             </div>
           </div>
@@ -217,36 +219,370 @@
   </div>
 
   <!-- Editorial Hero Layout -->
-  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-    <div class="space-y-6">
-      <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">Exclusive Event Production</span>
-      <h1 class="font-serif text-5xl sm:text-6xl font-bold tracking-wide text-gray-900 dark:text-white leading-tight">Every Love Story Deserves a Masterpiece.</h1>
-      <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">We design sophisticated celebrations with elegant floral palettes, custom tablescapes, and flawless timelines to make your dream day stress-free.</p>
-      <div class="flex flex-col sm:flex-row items-center gap-4">
-        <a href="booking-inquiry.html" class="w-full sm:w-auto px-8 py-4 text-center text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Book Private Consultation</a>
-        <a href="services.html" class="w-full sm:w-auto px-8 py-4 text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom">Our Services</a>
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="space-y-6">
+        <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">Exclusive Event Production</span>
+        <h1 class="font-serif text-5xl sm:text-6xl font-bold tracking-wide text-gray-900 dark:text-white leading-tight">Every Love Story Deserves a Masterpiece.</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">We design sophisticated celebrations with elegant floral palettes, custom tablescapes, and flawless timelines to make your dream day stress-free.</p>
+        <div class="flex flex-col sm:flex-row items-center gap-4">
+          <a href="booking-inquiry.html" class="w-full sm:w-auto px-8 py-4 text-center text-sm font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Book Private Consultation</a>
+          <a href="services.html" class="w-full sm:w-auto px-8 py-4 text-center text-sm font-bold text-gray-700 dark:text-gray-300 border border-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom">Our Services</a>
+        </div>
       </div>
-    </div>
-    
-    <!-- Image Gallery Overlay/Grid -->
-    <div class="grid grid-cols-2 gap-4">
-      <div class="space-y-4">
-        <img src="../assets/images/portfolio_vineyard.png" class="rounded-3xl shadow-md w-full h-64 object-cover">
-        <img src="../assets/images/portfolio_cliffside.png" class="rounded-3xl shadow-md w-full h-48 object-cover">
-      </div>
-      <div class="space-y-4 pt-8">
-        <img src="../assets/images/portfolio_estate.png" class="rounded-3xl shadow-md w-full h-48 object-cover">
-        <img src="../assets/images/about_setup.png" class="rounded-3xl shadow-md w-full h-64 object-cover">
+      
+      <!-- Image Gallery Overlay/Grid -->
+      <div class="grid grid-cols-2 gap-4">
+        <div class="space-y-4">
+          <img src="../assets/images/portfolio_vineyard.png" class="rounded-3xl shadow-md w-full h-48 sm:h-64 object-cover" alt="Vineyard Ceremony Layout">
+          <img src="../assets/images/portfolio_cliffside.png" class="rounded-3xl shadow-md w-full h-48 object-cover" alt="Cliffside Event Layout">
+        </div>
+        <div class="space-y-4 pt-0 sm:pt-8">
+          <img src="../assets/images/portfolio_estate.png" class="rounded-3xl shadow-md w-full h-48 object-cover" alt="Estate Table Setting">
+          <img src="../assets/images/about_setup.png" class="rounded-3xl shadow-md w-full h-48 sm:h-64 object-cover" alt="Floral Setup Details">
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Pull Quote Framing Philosophy -->
-  <section class="bg-primary-100 dark:bg-gray-900/50 py-16 text-center px-4">
-    <div class="max-w-3xl mx-auto space-y-4">
-      <span class="text-4xl text-primary-500 font-serif">“</span>
-      <p class="font-serif text-2xl sm:text-3xl italic text-gray-800 dark:text-primary-100">"We do not merely organize events. We preserve legacy, weave emotions, and build physical canvases of pure, authentic romance."</p>
-      <span class="block text-xs uppercase tracking-widest font-semibold text-primary-600 mt-4">— Sophia Sterling, Lead Coordinator</span>
+  <!-- Philosophy & Asymmetric Stats Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      
+      <!-- Asymmetric Text & Stats -->
+      <div class="lg:col-span-5 space-y-8">
+        <div class="space-y-3">
+          <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">Aesthetic Integrity</span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">Mastering the Art of Sophisticated Celebration</h2>
+        </div>
+        <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+          We believe the finest weddings are those where every spatial layout, floral scent, and musical note is meticulously balanced. Our design method aligns clean geometries with romantic flourishes to craft editorial moments.
+        </p>
+        
+        <!-- Asymmetric Stats Grid -->
+        <div class="grid grid-cols-2 gap-8 pt-4">
+          <div class="space-y-1.5">
+            <span class="block font-serif text-4xl font-bold text-primary-600 dark:text-primary-400">150+</span>
+            <span class="block text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold font-sans">Weddings Directed</span>
+          </div>
+          <div class="space-y-1.5">
+            <span class="block font-serif text-4xl font-bold text-primary-600 dark:text-primary-400">12+</span>
+            <span class="block text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400 font-semibold font-sans">Global Destinations</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Image Showcase -->
+      <div class="relative lg:col-span-7">
+        <div class="aspect-[4/3] rounded-[2.5rem] overflow-hidden shadow-2xl hover-lift transition-custom">
+          <img src="../assets/images/about_setup.png" alt="Beautiful Outdoor Wedding Setup" class="w-full h-full object-cover">
+        </div>
+        <!-- Floating Badge -->
+        <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-900 border border-gray-100 dark:border-gray-800 rounded-3xl p-6 shadow-xl hidden sm:flex items-center gap-4 hover-lift transition-custom">
+          <div class="h-12 w-12 bg-primary-100 dark:bg-primary-950/40 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400">
+            <span class="font-serif text-lg font-bold">8</span>
+          </div>
+          <div>
+            <span class="block text-xs text-gray-400 font-semibold uppercase tracking-wider font-sans">8 Years of Passion</span>
+            <span class="block font-serif text-sm font-bold text-gray-900 dark:text-white">Bespoke Aesthetic Design</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Editorial Services Section -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">Planning Tiers</span>
+        <h2 class="font-serif text-4xl font-bold text-gray-900 dark:text-white">Curated Service Experiences</h2>
+        <p class="text-sm text-gray-600 dark:text-gray-400 font-sans max-w-lg mx-auto">
+          Whether you require end-to-end design direction or meticulous final coordination, we have a structured approach for your big day.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        
+        <!-- Experience Card 1 -->
+        <div class="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-md cursor-pointer">
+          <img src="../assets/images/portfolio_vineyard.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Full Service Planning">
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            <div class="space-y-2 text-white">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-primary-300 uppercase tracking-widest">Tier 01</span>
+                <span class="text-xs text-primary-100 font-sans">From $8,500</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold">Full Editorial Production</h3>
+              <p class="text-xs text-primary-100/80 leading-relaxed font-sans">
+                Complete spatial design, tablescape mockups, master timeline building, vendor negotiations, and unlimited support.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card 2 -->
+        <div class="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-md cursor-pointer">
+          <img src="../assets/images/portfolio_estate.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Partial Design">
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            <div class="space-y-2 text-white">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-primary-300 uppercase tracking-widest">Tier 02</span>
+                <span class="text-xs text-primary-100 font-sans">From $5,000</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold">Partial Art Direction</h3>
+              <p class="text-xs text-primary-100/80 leading-relaxed font-sans">
+                Focuses on layout design, floral themes, guest experience curation, and coordination handoff 3 months prior.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Experience Card 3 -->
+        <div class="group relative aspect-[4/5] rounded-[2.5rem] overflow-hidden shadow-md cursor-pointer">
+          <img src="../assets/images/portfolio_cliffside.png" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt="Day-of Coordination">
+          <!-- Hover Overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-6 flex flex-col justify-end opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+            <div class="space-y-2 text-white">
+              <div class="flex justify-between items-center">
+                <span class="text-xs font-bold text-primary-300 uppercase tracking-widest">Tier 03</span>
+                <span class="text-xs text-primary-100 font-sans">From $2,500</span>
+              </div>
+              <h3 class="font-serif text-2xl font-bold">Day-Of Coordination</h3>
+              <p class="text-xs text-primary-100/80 leading-relaxed font-sans">
+                Rigorous timeline distribution, vendor check-ins, rehearsals, and comprehensive on-site choreography on the day.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature Pillars Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 py-16 border-b border-gray-100 dark:border-gray-800/40 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+        <!-- Pillar 1 -->
+        <div class="space-y-3">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Pillar 01</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Bespoke Design</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            Hand-sketched tablescapes, custom lighting plots, and color-swatched floral alignments engineered to match your story.
+          </p>
+        </div>
+        <!-- Pillar 2 -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-150 dark:border-gray-800/60 pt-6 md:pt-0 md:pl-10">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Pillar 02</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Impeccable Timelines</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            Strict minute-by-minute day-of orchestration plans shared dynamically with vendors to preserve layout synchronization.
+          </p>
+        </div>
+        <!-- Pillar 3 -->
+        <div class="space-y-3 border-t md:border-t-0 md:border-l border-gray-150 dark:border-gray-800/60 pt-6 md:pt-0 md:pl-10">
+          <span class="text-xs font-bold text-primary-600 dark:text-primary-400 uppercase tracking-wider font-sans">Pillar 03</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Global Concierge</h3>
+          <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+            Full destination vetting, multi-lingual client assistance, legal vendor representation, and overseas blocks support.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Asymmetric Love Stories Gallery -->
+  <section class="w-full bg-white dark:bg-gray-900 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">Selected Portfolios</span>
+        <h2 class="font-serif text-4xl font-bold text-gray-900 dark:text-white">Realized Editorial Love Stories</h2>
+      </div>
+
+      <!-- Asymmetrical Portfolio Layout -->
+      <div class="space-y-16 max-w-6xl mx-auto">
+        <!-- Story 1 (Split Layout) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div class="aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-lg relative group hover-lift transition-custom">
+            <img src="../assets/images/portfolio_vineyard.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Tuscany wedding">
+          </div>
+          <div class="space-y-4">
+            <span class="text-xs font-bold text-primary-600 uppercase tracking-wider font-sans">Tuscany, Italy</span>
+            <h3 class="font-serif text-3xl font-bold text-gray-900 dark:text-white">Clara & Julian's Estate Vineyard Vows</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              An elegant multi-day vineyard gathering highlighting soft sage elements, outdoor candlelit banquet tables, and editorial photography.
+            </p>
+            <a href="portfolio.html" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700">View Love Story &rarr;</a>
+          </div>
+        </div>
+
+        <!-- Story 2 (Split Layout - Reversed) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+          <div class="space-y-4 order-2 md:order-1">
+            <span class="text-xs font-bold text-primary-600 uppercase tracking-wider font-sans">Santorini, Greece</span>
+            <h3 class="font-serif text-3xl font-bold text-gray-900 dark:text-white">Elena & Marcus's Sunset Cliffside Vows</h3>
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed font-sans">
+              A minimalist, breathtaking white stucco deck celebration overlooking the azure Aegean sea, complete with lush local florals.
+            </p>
+            <a href="portfolio.html" class="inline-flex items-center text-sm font-bold text-primary-600 hover:text-primary-700">View Love Story &rarr;</a>
+          </div>
+          <div class="aspect-[16/9] rounded-[2.5rem] overflow-hidden shadow-lg relative group order-1 md:order-2 hover-lift transition-custom">
+            <img src="../assets/images/portfolio_cliffside.png" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" alt="Santorini wedding">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial Inquiry Pathway Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        
+        <!-- Left Side: Editorial Context -->
+        <div class="lg:col-span-5 space-y-6">
+          <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans">The Experience</span>
+          <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">Crafting Your Bespoke Narrative</h2>
+          <p class="text-sm sm:text-base text-gray-600 dark:text-gray-400 font-sans leading-relaxed">
+            Every celebration we plan is built from the ground up, designed to reflect your singular story. We align aesthetic direction, precise timelines, and vendor networks into a seamless choreography.
+          </p>
+          <div class="pt-4">
+            <a href="booking-inquiry.html" class="inline-flex items-center text-sm font-bold text-primary-600 dark:text-primary-400 hover:text-primary-700 transition-custom group">
+              Begin Your Journey 
+              <span class="ml-2 transform group-hover:translate-x-1 transition-transform">&rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Clean Line-Divided Phases -->
+        <div class="lg:col-span-7 space-y-8">
+          <div class="divide-y divide-gray-200/60 dark:divide-gray-800/40">
+            <!-- Phase 1 -->
+            <div class="pb-6 space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold text-primary-600 dark:text-primary-400 font-sans uppercase tracking-wider">Phase 01</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Aesthetic Alignment</h3>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 font-sans leading-relaxed pl-8 sm:pl-16">
+                Collaborative brainstorming to draft bespoke tablescapes, custom lighting concepts, and seasonal floral schemes that reflect your taste.
+              </p>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="py-6 space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold text-primary-600 dark:text-primary-400 font-sans uppercase tracking-wider">Phase 02</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Logistics Orchestration</h3>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 font-sans leading-relaxed pl-8 sm:pl-16">
+                Constructing a comprehensive, minute-by-minute master timeline while managing travel logistics, vendor contracts, and layout blueprints.
+              </p>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="pt-6 space-y-2">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-bold text-primary-600 dark:text-primary-400 font-sans uppercase tracking-wider">Phase 03</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">On-Site Execution</h3>
+              </div>
+              <p class="text-sm text-gray-600 dark:text-gray-400 font-sans leading-relaxed pl-8 sm:pl-16">
+                Seamless day-of management with our coordinators handling vendor setups, guest flows, and cues so you remain fully present.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial FAQ Section -->
+  <section class="w-full bg-white dark:bg-gray-900 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      
+      <div class="text-center space-y-3">
+        <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400">FAQs</span>
+        <h2 class="font-serif text-4xl font-bold text-gray-900 dark:text-white">Curated Studio Intelligence</h2>
+      </div>
+
+      <!-- FAQ Accordions (Clean Line-based) -->
+      <div class="border-t border-gray-100 dark:border-gray-800 divide-y divide-gray-100 dark:divide-gray-800 font-sans">
+        
+        <!-- Accordion 1 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(1)" class="w-full flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-lg font-bold text-gray-900 dark:text-white">How far in advance should we secure your planning services?</span>
+            <svg id="faq-chevron-1" class="h-5 w-5 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-1" class="faq-content hidden mt-3 pr-8">
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              We recommend securing our studio 9 to 14 months before your ideal wedding date. This ensures ample time for scouting premium venues, sourcing high-profile vendors, and refining detailed design components.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 2 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(2)" class="w-full flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-lg font-bold text-gray-900 dark:text-white">Do you specialize in destination weddings abroad?</span>
+            <svg id="faq-chevron-2" class="h-5 w-5 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-2" class="faq-content hidden mt-3 pr-8">
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Yes, our team specializes in producing weddings internationally. We handle regional permits, vendor translation services, customs coordination, and full guest accommodations blocks.
+            </p>
+          </div>
+        </div>
+
+        <!-- Accordion 3 -->
+        <div class="py-5">
+          <button onclick="toggleFaq(3)" class="w-full flex justify-between items-center text-left focus:outline-none">
+            <span class="font-serif text-lg font-bold text-gray-900 dark:text-white">What is the difference between Day-Of and Full Production?</span>
+            <svg id="faq-chevron-3" class="h-5 w-5 text-gray-400 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div id="faq-content-3" class="faq-content hidden mt-3 pr-8">
+            <p class="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">
+              Full Production guides you through every vendor search, color swatch choice, and booking step. Day-Of coordination begins 1 month prior to review your timeline, coordinate the rehearsal, and run the event choreography.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Editorial CTA Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Let's Design Together</span>
+        <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          Ready to Begin Your <span class="italic font-normal">EverAfter</span> Story?
+        </h2>
+        <p class="text-base text-gray-600 dark:text-gray-400 font-sans leading-relaxed max-w-2xl mx-auto">
+          Secure a private consultation with our lead producers to map out your aesthetic vision, day-of choreography, and bespoke logistics.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+        <a href="booking-inquiry.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom hover-lift shadow-md hover:shadow-lg text-center">
+          Book Private Consultation
+        </a>
+        <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom hover-lift text-center">
+          General Inquiry &rarr;
+        </a>
+      </div>
     </div>
   </section>
 
