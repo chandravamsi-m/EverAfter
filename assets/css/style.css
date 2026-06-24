@@ -234,6 +234,9 @@ input[type="range"].slider-premium::-moz-range-thumb {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
   background: #c29b77;
 }
-
-
-
+.logo-icon {
+  display: inline-block;
+  background-color: currentColor;
+  -webkit-mask: url('../images/favicon.svg') no-repeat center/contain;
+  mask: url('../images/favicon.svg') no-repeat center/contain;
+}
