@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login | Wedding Planner & Coordinator</title>
+  <title>Login | EverAfter Wedding Planner</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -42,108 +42,171 @@
       }
     }
   </script>
-  <link rel="stylesheet" href="../assets/css/style.css">
+  <link class="theme-style" rel="stylesheet" href="../assets/css/style.css">
   <link rel="stylesheet" href="../assets/css/dark-mode.css">
   <link rel="stylesheet" href="../assets/css/rtl.css">
 </head>
-<body class="min-h-screen bg-primary-50 dark:bg-gray-950 flex flex-col justify-between py-12 px-4 sm:px-6 lg:px-8 relative transition-custom">
+<body class="min-h-screen bg-white dark:bg-gray-950 text-gray-800 dark:text-gray-100 transition-custom overflow-x-hidden">
 
-  <!-- Floating Settings Toggles -->
-  <div class="absolute top-6 right-6 flex items-center space-x-3">
-    <button class="rtl-toggle p-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-custom" title="Toggle RTL/LTR">
-      <span class="text-sm font-semibold tracking-wider">RTL</span>
-    </button>
-    <button class="theme-toggle p-2 rounded-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-custom" title="Toggle Light/Dark Mode">
-      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-      </svg>
-    </button>
-  </div>
-
-  <div class="my-auto sm:mx-auto sm:w-full sm:max-w-md">
-    <!-- Header/Logo -->
-    <div class="text-center mb-8">
-      <h2 class="font-serif text-4xl font-semibold tracking-wide text-primary-600 dark:text-primary-400">Ever After</h2>
-      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Wedding Planners & Coordinators</p>
+  <!-- Main Grid Wrapper with fixed height on desktop -->
+  <div class="min-h-screen lg:h-screen lg:overflow-hidden flex flex-col lg:grid lg:grid-cols-2">
+    
+    <!-- Left Panel (Editorial image column) - Exactly 50% width and h-full (Fixed) -->
+    <div class="hidden lg:relative lg:flex flex-col justify-end p-16 bg-cover bg-center h-full overflow-hidden" style="background-image: url('../assets/images/portfolio_estate.png');">
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-gray-955/90 via-gray-955/30 to-transparent z-0" style="background-image: linear-gradient(to top, rgba(18, 18, 16, 0.95) 0%, rgba(18, 18, 16, 0.3) 60%, transparent 100%);"></div>
+      <div class="absolute inset-0 bg-primary-950/15 backdrop-blur-[0.5px] z-0"></div>
+      
+      <!-- Editorial Quote Content -->
+      <div class="relative z-10 space-y-6 max-w-lg">
+        <span class="text-xs font-bold tracking-widest text-primary-300 uppercase">Luxury Wedding Planning</span>
+        <blockquote class="font-serif text-4xl italic text-primary-50 leading-relaxed font-light">
+          "Designing matches made in heaven, crafting moments that last a lifetime."
+        </blockquote>
+        <div class="border-t border-white/20 pt-6">
+          <p class="text-sm font-semibold tracking-wider text-white uppercase">The EverAfter Design Studio</p>
+          <p class="text-xs text-primary-200">Creative Directors</p>
+        </div>
+      </div>
     </div>
 
-    <!-- Login Card -->
-    <div class="bg-white dark:bg-gray-900 py-8 px-6 shadow-xl rounded-3xl border border-gray-100 dark:border-gray-800 sm:px-10">
-      <h3 class="font-serif text-2xl font-semibold text-gray-900 dark:text-white mb-6 text-center">Welcome Back</h3>
+    <!-- Right Panel (Form column) - Exactly 50% width and scrollable on desktop -->
+    <div class="flex-1 flex flex-col justify-between py-8 px-4 sm:py-10 sm:px-10 lg:py-12 lg:px-12 xl:py-16 xl:px-20 bg-white dark:bg-gray-950 transition-custom relative lg:h-full lg:overflow-y-auto">
       
-      <form id="login-form" class="space-y-6">
-        <!-- Email Input -->
-        <div>
-          <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
-          <div class="mt-1">
-            <input id="email" name="email" type="email" required placeholder="name@example.com" class="appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
-          </div>
-          <p class="mt-1 text-xs text-gray-400">Use <span class="font-mono">admin@example.com</span> to access the Admin Panel, or any other email for Couple Portal.</p>
-        </div>
-
-        <!-- Password Input -->
-        <div>
-          <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
-          <div class="mt-1 relative rounded-md shadow-sm">
-            <input id="password" name="password" type="password" required placeholder="••••••••" class="appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm placeholder-gray-400 focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
-            <button type="button" class="toggle-password absolute inset-y-0 right-0 pr-3 flex items-center" data-target="password">
-              <svg class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-              </svg>
-            </button>
-          </div>
-        </div>
-
-        <!-- Remember Me + Forgot Password -->
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500 border-gray-300 rounded">
-            <label for="remember-me" class="ml-2 block text-sm text-gray-700 dark:text-gray-300">Remember me</label>
-          </div>
-          <div class="text-sm">
-            <a href="#" class="font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">Forgot password?</a>
-          </div>
-        </div>
-
-        <!-- Submit Button -->
-        <div>
-          <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-sm text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-custom">
-            Sign In
+      <!-- Top header row aligned to form width, outside my-auto centering wrapper so it pins to top on mobile -->
+      <div class="w-full max-w-md mx-auto flex justify-between items-center pb-3.5 border-b border-gray-100 dark:border-gray-900 mb-6 flex-shrink-0">
+        <a href="../index.html" class="flex items-center gap-2 font-serif text-3xl font-bold tracking-normal text-primary-600 dark:text-primary-400 group">
+          <svg class="h-8 w-8 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="13" r="4.5" />
+            <circle cx="15" cy="13" r="4.5" />
+            <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+          </svg>
+          <span>EverAfter</span>
+        </a>
+        
+        <div class="flex items-center gap-3">
+          <!-- RTL Toggle -->
+          <button class="rtl-toggle px-2.5 py-1 text-xs font-bold tracking-wider text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-custom" title="Toggle RTL">
+            <span>RTL</span>
+          </button>
+          <!-- Theme Toggle -->
+          <button class="theme-toggle p-1.5 text-gray-500 hover:text-gray-800 dark:text-gray-400 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-900 rounded-lg transition-custom" title="Toggle Theme">
+            <svg class="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
           </button>
         </div>
-      </form>
+      </div>
 
-      <!-- Social Logins -->
-      <div class="mt-6">
-        <div class="relative">
-          <div class="absolute inset-0 flex items-center">
-            <div class="w-full border-t border-gray-200 dark:border-gray-800"></div>
+      <!-- Center Content Wrapper -->
+      <div class="my-auto w-full max-w-md mx-auto space-y-5">
+        
+        <!-- Header text -->
+        <div class="space-y-1 text-start">
+          <h2 class="font-serif text-2xl sm:text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">Welcome back</h2>
+          <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Please enter your details to sign in to your wedding workspace.</p>
+        </div>
+
+        <!-- Form -->
+        <form id="login-form" class="space-y-3.5">
+          <!-- Email -->
+          <div class="space-y-1">
+            <label for="email" class="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Email Address</label>
+            <div class="relative rounded-xl">
+              <div class="absolute inset-y-0 start-0 w-11 flex items-center justify-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-405" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <input id="email" name="email" type="email" required placeholder="name@example.com" class="appearance-none block w-full ps-11 pe-4 py-2.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent text-sm text-gray-800 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-custom">
+            </div>
           </div>
-          <div class="relative flex justify-center text-sm">
-            <span class="px-2 bg-white dark:bg-gray-900 text-gray-500">Or continue with</span>
+
+          <!-- Password -->
+          <div class="space-y-1">
+            <label for="password" class="block text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">Password</label>
+            <div class="relative rounded-xl">
+              <div class="absolute inset-y-0 start-0 w-11 flex items-center justify-center pointer-events-none">
+                <svg class="h-5 w-5 text-gray-405" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
+              </div>
+              <input id="password" name="password" type="password" required placeholder="••••••••" class="appearance-none block w-full ps-11 pe-11 py-2.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent text-sm text-gray-800 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-custom">
+              <button type="button" class="toggle-password absolute inset-y-0 end-0 w-11 flex items-center justify-center" data-target="password">
+                <svg class="h-5 w-5 text-gray-405 hover:text-gray-700 dark:hover:text-gray-200 transition-custom" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Remember Me + Forgot Password Row -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-primary-600 focus:ring-primary-500/20 border-gray-200 dark:border-gray-800 rounded bg-transparent transition-custom">
+              <label for="remember-me" class="ms-2 block text-sm text-gray-655 dark:text-gray-400">Keep me logged in</label>
+            </div>
+            <a href="#" class="text-xs font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-custom">Forgot password?</a>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-xl shadow-md hover:shadow-lg text-xs font-bold uppercase tracking-widest text-white bg-primary-600 hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 transition-custom hover-lift">
+            Sign In
+          </button>
+        </form>
+
+        <!-- Social Logins Divider -->
+        <div class="space-y-3">
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center">
+              <div class="w-full border-t border-gray-150 dark:border-gray-855"></div>
+            </div>
+            <div class="relative flex justify-center text-xs">
+              <span class="px-3 bg-white dark:bg-gray-950 text-gray-400 font-medium">Or continue with</span>
+            </div>
+          </div>
+
+          <!-- Horizontal grid with icons and short text labels -->
+          <div class="grid grid-cols-3 gap-2">
+            <!-- Google -->
+            <a href="#" class="inline-flex items-center justify-center gap-1.5 py-2 px-2.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent hover:bg-gray-50 dark:hover:bg-gray-900 transition-custom shadow-sm text-xs font-semibold text-gray-700 dark:text-gray-300 hover-lift" title="Sign in with Google">
+              <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22c-.87-2.6-2.6-4.53-2.6-4.53z"/>
+                <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+              </svg>
+              <span>Google</span>
+            </a>
+            <!-- Facebook -->
+            <a href="#" class="inline-flex items-center justify-center gap-1.5 py-2 px-2.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent hover:bg-gray-50 dark:hover:bg-gray-900 transition-custom shadow-sm text-xs font-semibold text-gray-700 dark:text-gray-300 hover-lift" title="Sign in with Facebook">
+              <svg class="h-4 w-4 flex-shrink-0" viewBox="0 0 24 24">
+                <path fill="#1877F2" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+            <!-- Apple -->
+            <a href="#" class="inline-flex items-center justify-center gap-1.5 py-2 px-2.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent hover:bg-gray-50 dark:hover:bg-gray-900 transition-custom shadow-sm text-xs font-semibold text-gray-700 dark:text-gray-300 hover-lift" title="Sign in with Apple">
+              <svg class="h-4 w-4 flex-shrink-0 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.62.71-1.16 1.85-1.01 2.96 1.12.09 2.27-.57 2.94-1.39z"/>
+              </svg>
+              <span>Apple</span>
+            </a>
           </div>
         </div>
 
-        <div class="mt-6 grid grid-cols-2 gap-3">
-          <a href="#" class="w-full inline-flex justify-center py-2.5 px-4 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800">
-            <span class="sr-only">Sign in with Google</span>
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12.24 10.285V14.4h6.887c-.648 2.41-2.519 4.114-5.136 4.114-3.51 0-6.353-2.853-6.353-6.353s2.843-6.353 6.353-6.353c1.614 0 3.15.58 4.35 1.625l3.078-3.078C19.395 2.5 16.03 1.25 12.24 1.25 6.262 1.25 1.39 6.12 1.39 12.1s4.872 10.85 10.85 10.85c5.782 0 10.58-4.125 10.58-10.85 0-.607-.052-1.215-.157-1.815H12.24z"/>
-            </svg>
-          </a>
-          <a href="#" class="w-full inline-flex justify-center py-2.5 px-4 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm font-medium text-gray-500 hover:bg-gray-50 dark:hover:bg-gray-800">
-            <span class="sr-only">Sign in with Apple</span>
-            <svg class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.17c.66-.81 1.11-1.93.99-3.06-1 .04-2.2.67-2.92 1.49-.62.71-1.16 1.85-1.01 2.96 1.12.09 2.27-.57 2.94-1.39z"/>
-            </svg>
-          </a>
-        </div>
+        <!-- Footer Text -->
+        <p class="text-xs sm:text-sm text-center text-gray-555 dark:text-gray-400">
+          Don't have an account yet? 
+          <a href="signup.html" class="font-semibold text-primary-600 dark:text-primary-400 hover:text-primary-700 dark:hover:text-primary-300 transition-custom">Create an account</a>
+        </p>
       </div>
 
-      <div class="mt-6 text-center">
-        <p class="text-sm text-gray-600 dark:text-gray-400">Don't have an account? <a href="signup.html" class="font-medium text-primary-600 dark:text-primary-400 hover:text-primary-500">Sign up</a></p>
-      </div>
+      <!-- Tiny Footer -->
+      <footer class="w-full text-center text-xs text-gray-400 dark:text-gray-500 pt-4 transition-custom flex-shrink-0">
+        &copy; 2026 EverAfter. All rights reserved.
+      </footer>
     </div>
   </div>
 

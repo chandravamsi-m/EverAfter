@@ -216,94 +216,263 @@
     </div>
   </div>
 
-  <!-- Multi-step Form Wizard Container -->
-  <main class="my-auto max-w-xl w-full mx-auto px-4 py-8">
-    <div class="bg-white dark:bg-gray-900 rounded-3xl p-8 border border-gray-100 dark:border-gray-800 shadow-xl space-y-6">
-      
-      <!-- Wizard Progress steps indicators -->
-      <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-4">
-        <div class="flex items-center space-x-2">
-          <span id="step-badge-1" class="h-8 w-8 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold text-sm">1</span>
-          <span class="text-xs font-semibold text-gray-500">Contact</span>
+  <!-- Hero Section -->
+  <section class="w-full bg-white dark:bg-gray-900 pt-16 sm:pt-24 pb-12 sm:pb-16 transition-custom border-b border-gray-100 dark:border-gray-800/40">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+      <span class="text-xs uppercase tracking-widest font-semibold text-primary-600 dark:text-primary-400 font-sans block">Consultation Booking</span>
+      <h1 class="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold tracking-wide text-gray-900 dark:text-white leading-tight">
+        Plan Your Custom Curation
+      </h1>
+      <p class="text-sm sm:text-base md:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto font-sans">
+        Answer a few brief details regarding your date, venue, and desired coordination tiers. Sophia Loren and our design leads will curate a bespoke blueprint proposal for your day.
+      </p>
+    </div>
+  </section>
+
+  <!-- Wizard Form Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 py-12 sm:py-16 transition-custom">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-150/40 dark:border-gray-800/80 shadow-2xl overflow-hidden transition-custom">
+        
+        <!-- Left Column: Trust Info & Branding -->
+        <div class="lg:col-span-5 bg-primary-600 p-6 sm:p-8 md:p-10 text-white flex flex-col justify-between relative overflow-hidden">
+          <!-- Decorative circular graphic -->
+          <div class="absolute -right-24 -top-24 w-48 h-48 bg-white/5 rounded-full"></div>
+          <div class="absolute -left-20 -bottom-20 w-44 h-44 bg-white/5 rounded-full"></div>
+          
+          <div class="space-y-6 relative z-10 text-left">
+            <span class="text-[10px] uppercase tracking-widest font-bold bg-white/20 px-3 py-1 rounded-full font-sans">EverAfter Consultation</span>
+            <div class="space-y-3">
+              <h2 class="font-serif text-2xl sm:text-3xl font-bold leading-tight">Secure Your Private Curation</h2>
+              <p class="text-xs sm:text-sm text-primary-100 font-sans leading-relaxed">
+                Step into an elevated coordination process. Provide your destination specifications, guest ranges, and budget blueprints, and let our art directors craft your timeline choreography.
+              </p>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="space-y-4 pt-4 border-t border-white/10 text-xs text-primary-100 font-sans">
+              <div class="flex items-center gap-3">
+                <svg class="h-5 w-5 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Vetted Premium Vendor Network Index</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="h-5 w-5 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Featured in Vogue &amp; Harper's Bazaar</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <svg class="h-5 w-5 text-primary-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Bespoke Timeline Choreography &amp; Compliance</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Pull Quote from Sophia Loren -->
+          <div class="pt-6 relative z-10 text-left space-y-3 border-t border-white/10 mt-6">
+            <p class="font-serif italic text-xs sm:text-sm text-primary-100">
+              "We do not simply coordinate tables and chairs. We choreograph the exact light, textures, and sensory logs of your once-in-a-lifetime memory."
+            </p>
+            <div class="flex items-center gap-3">
+              <img src="../assets/images/admin_avatar.png" alt="Sophia Loren" class="w-8 h-8 rounded-full object-cover">
+              <div>
+                <p class="text-[10px] font-bold">Sophia Loren</p>
+                <p class="text-[8px] text-primary-200 uppercase tracking-wider">Lead Art Director</p>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="flex items-center space-x-2">
-          <span id="step-badge-2" class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 flex items-center justify-center font-bold text-sm">2</span>
-          <span class="text-xs font-semibold text-gray-500">Details</span>
+
+        <!-- Right Column: Consultation Form Wizard -->
+        <div class="lg:col-span-7 p-6 sm:p-8 md:p-10 flex flex-col justify-start space-y-6 bg-white dark:bg-gray-900 transition-custom">
+          
+          <!-- Wizard Progress steps indicators -->
+          <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800/85 pb-6">
+            <div class="flex items-center space-x-2">
+              <span id="step-badge-1" class="h-7 w-7 sm:h-8 sm:w-8 rounded-xl bg-primary-600 text-white flex items-center justify-center font-bold text-xs sm:text-sm shadow-sm transition-custom">1</span>
+              <span class="text-[10px] sm:text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider font-sans">Contact</span>
+            </div>
+            <div class="h-[1px] flex-1 bg-gray-100 dark:bg-gray-800 mx-2 sm:mx-4"></div>
+            <div class="flex items-center space-x-2">
+              <span id="step-badge-2" class="h-7 w-7 sm:h-8 sm:w-8 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 flex items-center justify-center font-bold text-xs sm:text-sm transition-custom">2</span>
+              <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider font-sans">Details</span>
+            </div>
+            <div class="h-[1px] flex-1 bg-gray-100 dark:bg-gray-800 mx-2 sm:mx-4"></div>
+            <div class="flex items-center space-x-2">
+              <span id="step-badge-3" class="h-7 w-7 sm:h-8 sm:w-8 rounded-xl bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 flex items-center justify-center font-bold text-xs sm:text-sm transition-custom">3</span>
+              <span class="text-[10px] sm:text-xs font-bold text-gray-400 uppercase tracking-wider font-sans">Package</span>
+            </div>
+          </div>
+
+          <!-- Multi-step Form -->
+          <form id="consultation-wizard" class="space-y-6">
+            
+            <!-- STEP 1 PANEL -->
+            <div id="step-panel-1" class="step-panel space-y-5 text-left">
+              <div class="space-y-2">
+                <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Tell us about yourselves</h3>
+                <p class="text-xs text-gray-500 font-sans">Begin by introducing yourselves so we can tailor our initial design blueprints.</p>
+              </div>
+              
+              <div class="space-y-4 pt-2">
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Couple Names</label>
+                  <input type="text" id="wizard-names" required placeholder="Alex &amp; Taylor" class="mt-1.5 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Email Address</label>
+                  <input type="email" id="wizard-email" required placeholder="name@example.com" class="mt-1.5 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Phone Number</label>
+                  <input type="tel" id="wizard-phone" required placeholder="(555) 000-0000" class="mt-1.5 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+              </div>
+              
+              <button type="button" onclick="nextStep(2)" class="w-full py-3.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md hover:shadow-lg transition-custom hover-lift">Continue &rarr;</button>
+            </div>
+
+            <!-- STEP 2 PANEL -->
+            <div id="step-panel-2" class="step-panel hidden space-y-5 text-left">
+              <div class="space-y-2">
+                <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Wedding Timeline Details</h3>
+                <p class="text-xs text-gray-500 font-sans">Help us understand the timing, logistics, and target scale of your celebration.</p>
+              </div>
+              
+              <div class="space-y-4 pt-2">
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Expected Date</label>
+                  <input type="date" id="wizard-date" required class="mt-1.5 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Have you booked a Venue?</label>
+                  <select id="wizard-venue-booked" class="mt-1.5 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                    <option value="Yes" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Yes, Venue is Booked</option>
+                    <option value="No" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">No, Still Scouting</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Estimated Guest Count</label>
+                  <input type="number" id="wizard-guests" required placeholder="e.g. 150" class="mt-1.5 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <button type="button" onclick="nextStep(1)" class="w-1/2 py-3.5 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-custom">Back</button>
+                <button type="button" onclick="nextStep(3)" class="w-1/2 py-3.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md hover:shadow-lg transition-custom hover-lift">Continue &rarr;</button>
+              </div>
+            </div>
+
+            <!-- STEP 3 PANEL -->
+            <div id="step-panel-3" class="step-panel hidden space-y-5 text-left">
+              <div class="space-y-2">
+                <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Budget &amp; Planning Package</h3>
+                <p class="text-xs text-gray-500 font-sans">Finalize the scope and pricing tiers aligned with your aesthetic goals.</p>
+              </div>
+              
+              <div class="space-y-4 pt-2">
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Estimated Budget Range</label>
+                  <select id="wizard-budget-range" class="mt-1.5 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                    <option value="Under $20k" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Under $20,000</option>
+                    <option value="$20k - $50k" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">$20,000 - $50,000</option>
+                    <option value="Over $50k" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Over $50,000</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Preferred Service tier</label>
+                  <select id="wizard-tier" class="mt-1.5 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                    <option value="Full Planning" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Full Design &amp; Planning</option>
+                    <option value="Partial Planning" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Partial Planning</option>
+                    <option value="Day-Of Coordination" class="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-100">Day-of Coordination Only</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-semibold text-gray-500 uppercase tracking-wider">Target Destination / City</label>
+                  <input type="text" id="wizard-location" required placeholder="e.g. Napa Valley, CA or Paris, France" class="mt-1.5 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm bg-white dark:bg-gray-900 text-sm text-gray-800 dark:text-gray-100 focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 focus:outline-none transition-custom">
+                </div>
+              </div>
+              
+              <div class="flex gap-4">
+                <button type="button" onclick="nextStep(2)" class="w-1/2 py-3.5 border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-custom">Back</button>
+                <button type="submit" class="w-1/2 py-3.5 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-xs font-bold uppercase tracking-widest shadow-md hover:shadow-lg transition-custom hover-lift">Submit Inquiry</button>
+              </div>
+            </div>
+          </form>
         </div>
-        <div class="flex items-center space-x-2">
-          <span id="step-badge-3" class="h-8 w-8 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 flex items-center justify-center font-bold text-sm">3</span>
-          <span class="text-xs font-semibold text-gray-500">Package</span>
-        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Service Tiers Section -->
+  <section class="w-full bg-white dark:bg-gray-900 py-12 sm:py-16 border-t border-b border-gray-100 dark:border-gray-800/40 transition-custom">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Our Services</span>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">Planning Tier Reference</h2>
+        <p class="text-xs sm:text-sm text-gray-500 font-sans max-w-lg mx-auto">Select the perfect level of guidance and design mapping for your celebration.</p>
       </div>
 
-      <!-- Multi-step Form -->
-      <form id="consultation-wizard" class="space-y-6">
-        
-        <!-- STEP 1 PANEL -->
-        <div id="step-panel-1" class="step-panel space-y-4">
-          <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Tell us about yourselves</h3>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Couple Names</label>
-            <input type="text" id="wizard-names" required placeholder="Alex & Taylor" class="mt-1 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Email Address</label>
-            <input type="email" id="wizard-email" required placeholder="name@example.com" class="mt-1 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
-          </div>
-          <button type="button" onclick="nextStep(2)" class="w-full py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-semibold transition-custom">Continue &rarr;</button>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-md md:max-w-none mx-auto">
+        <!-- Tier 1 -->
+        <div class="bg-primary-50 dark:bg-gray-950/40 rounded-3xl p-8 border border-gray-150/40 dark:border-gray-800 shadow-sm text-left space-y-4 hover-lift transition-custom">
+          <span class="text-[9px] uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 block font-sans">Full Service</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Design &amp; Coordination</h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-sans">
+            A complete luxury package. We curate everything from initial stone estate mappings to fabric sourcing and day-of choreography timelines.
+          </p>
         </div>
 
-        <!-- STEP 2 PANEL -->
-        <div id="step-panel-2" class="step-panel hidden space-y-4">
-          <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Wedding Timeline Details</h3>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Expected Date</label>
-            <input type="date" id="wizard-date" required class="mt-1 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Have you booked a Venue?</label>
-            <select id="wizard-venue-booked" class="mt-1 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
-              <option value="Yes">Yes, Venue is Booked</option>
-              <option value="No">No, Still Scouting</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated Guest Count</label>
-            <input type="number" id="wizard-guests" placeholder="e.g. 150" class="mt-1 appearance-none block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500 sm:text-sm">
-          </div>
-          <div class="flex gap-4">
-            <button type="button" onclick="nextStep(1)" class="w-1/2 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold">Back</button>
-            <button type="button" onclick="nextStep(3)" class="w-1/2 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-semibold transition-custom">Continue &rarr;</button>
-          </div>
+        <!-- Tier 2 -->
+        <div class="bg-primary-50 dark:bg-gray-950/40 rounded-3xl p-8 border border-gray-150/40 dark:border-gray-800 shadow-sm text-left space-y-4 hover-lift transition-custom">
+          <span class="text-[9px] uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 block font-sans">Partial Support</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Partial Planning</h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-sans">
+            For couples who have secured their venue but want Sophia's refined touch for table scapes, scenery design, and vendor vetting.
+          </p>
         </div>
 
-        <!-- STEP 3 PANEL -->
-        <div id="step-panel-3" class="step-panel hidden space-y-4">
-          <h3 class="font-serif text-2xl font-bold text-gray-900 dark:text-white">Budget & Planning Package</h3>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Estimated Budget Range</label>
-            <select id="wizard-budget-range" class="mt-1 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
-              <option value="Under $20k">Under $20,000</option>
-              <option value="$20k - $50k">$20,000 - $50,000</option>
-              <option value="Over $50k">Over $50,000</option>
-            </select>
-          </div>
-          <div>
-            <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Preferred Service tier</label>
-            <select id="wizard-tier" class="mt-1 block w-full px-4 py-3 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
-              <option value="Full Planning">Full Design & Planning</option>
-              <option value="Partial Planning">Partial Planning</option>
-              <option value="Day-Of Coordination">Day-of Coordination Only</option>
-            </select>
-          </div>
-          <div class="flex gap-4">
-            <button type="button" onclick="nextStep(2)" class="w-1/2 py-3 border border-gray-300 text-gray-700 rounded-xl font-semibold">Back</button>
-            <button type="submit" class="w-1/2 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-semibold transition-custom">Submit Inquiry</button>
-          </div>
+        <!-- Tier 3 -->
+        <div class="bg-primary-50 dark:bg-gray-950/40 rounded-3xl p-8 border border-gray-150/40 dark:border-gray-800 shadow-sm text-left space-y-4 hover-lift transition-custom">
+          <span class="text-[9px] uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 block font-sans">Essential</span>
+          <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Day-Of Coordination</h3>
+          <p class="text-xs text-gray-500 leading-relaxed font-sans">
+            Flawless execution. We step in 6 weeks prior to synchronize vendor indices, manage layout setups, and direct day-of scheduling.
+          </p>
         </div>
-      </form>
+      </div>
     </div>
-  </main>
+  </section>
+
+  <!-- Editorial CTA Section -->
+  <section class="w-full bg-primary-50 dark:bg-gray-950 border-b border-gray-100 dark:border-gray-800/40 py-16 transition-custom">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+      <div class="space-y-4">
+        <span class="text-xs uppercase tracking-widest font-bold text-primary-600 dark:text-primary-400 font-sans block">Let's Design Together</span>
+        <h2 class="font-serif text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white leading-tight">
+          Ready to Begin Your <span class="italic font-normal">EverAfter</span> Story?
+        </h2>
+        <p class="text-base text-gray-600 dark:text-gray-400 font-sans leading-relaxed max-w-2xl mx-auto">
+          Secure a private consultation with our lead producers to map out your aesthetic vision, day-of choreography, and bespoke logistics.
+        </p>
+      </div>
+      
+      <div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+        <a href="contact.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom hover-lift shadow-md hover:shadow-lg text-center">
+          General Inquiry &rarr;
+        </a>
+        <a href="portfolio.html" class="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-xs uppercase tracking-widest font-bold text-gray-700 dark:text-gray-300 border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-xl transition-custom hover-lift text-center">
+          Explore Our Portfolio
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- Footer -->
   <footer class="bg-[#121210] text-[#B5B2AC] border-t border-[#2E2D2A] pt-16 pb-12 transition-custom">
@@ -383,9 +552,55 @@
     </div>
   </footer>
 
+  <!-- Success Modal -->
+  <div id="success-modal" class="fixed inset-0 z-50 flex items-center justify-center hidden" role="dialog" aria-modal="true">
+    <!-- Backdrop -->
+    <div class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity duration-300"></div>
+    
+    <!-- Modal Content -->
+    <div class="relative bg-white dark:bg-gray-900 rounded-[2rem] border border-gray-100 dark:border-gray-800 p-8 sm:p-10 shadow-2xl max-w-md w-full mx-4 text-center space-y-6 transition-custom transform scale-95 opacity-0 duration-300" id="success-modal-panel">
+      <!-- Success Icon -->
+      <div class="mx-auto h-16 w-16 rounded-full bg-primary-50 dark:bg-primary-950/45 border border-primary-100 dark:border-primary-800/80 flex items-center justify-center">
+        <svg class="h-8 w-8 text-primary-600 dark:text-primary-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+
+      <!-- Text -->
+      <div class="space-y-2">
+        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white">Inquiry Received</h3>
+        <p class="text-xs sm:text-sm text-gray-500 dark:text-gray-400 font-sans leading-relaxed">
+          Thank you for sharing your vision. A lead coordinator will contact you within 24 hours to schedule your private consultation session.
+        </p>
+      </div>
+
+      <!-- Buttons -->
+      <div class="flex gap-4 pt-2">
+        <button onclick="closeSuccessModal()" class="w-1/2 py-3 border border-gray-200 dark:border-gray-850 text-gray-700 dark:text-gray-300 rounded-xl text-xs font-bold uppercase tracking-widest hover:bg-gray-50 dark:hover:bg-gray-800 transition-custom">Close</button>
+        <a href="../index.html" class="w-1/2 py-3 bg-primary-600 hover:bg-primary-700 text-white rounded-xl text-xs font-bold uppercase tracking-widest text-center shadow-md hover:shadow-lg transition-custom hover-lift flex items-center justify-center">Go Home &rarr;</a>
+      </div>
+    </div>
+  </div>
+
   <script src="../assets/js/main.js"></script>
   <script>
     function nextStep(stepNum) {
+      const currentPanel = document.querySelector('.step-panel:not(.hidden)');
+      const currentStepNum = parseInt(currentPanel.id.replace('step-panel-', ''));
+      
+      if (stepNum > currentStepNum) {
+        // Enforce validation when going forward
+        const inputs = currentPanel.querySelectorAll('input[required], select[required]');
+        let valid = true;
+        inputs.forEach(input => {
+          if (!input.checkValidity()) {
+            input.reportValidity();
+            valid = false;
+          }
+        });
+        if (!valid) return;
+      }
+
       // Hide all panels
       document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
       // Show correct panel
@@ -394,20 +609,49 @@
       // Update badges
       for (let i = 1; i <= 3; i++) {
         const badge = document.getElementById(`step-badge-${i}`);
+        const label = badge.nextElementSibling;
         if (i <= stepNum) {
           badge.classList.add('bg-primary-600', 'text-white');
           badge.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+          if (label) {
+            label.classList.add('text-gray-900', 'dark:text-white');
+            label.classList.remove('text-gray-400');
+          }
         } else {
           badge.classList.remove('bg-primary-600', 'text-white');
           badge.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+          if (label) {
+            label.classList.remove('text-gray-900', 'dark:text-white');
+            label.classList.add('text-gray-400');
+          }
         }
       }
     }
 
+    function showSuccessModal() {
+      const modal = document.getElementById('success-modal');
+      const panel = document.getElementById('success-modal-panel');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        panel.classList.remove('scale-95', 'opacity-0');
+        panel.classList.add('scale-100', 'opacity-100');
+      }, 10);
+    }
+
+    function closeSuccessModal() {
+      const modal = document.getElementById('success-modal');
+      const panel = document.getElementById('success-modal-panel');
+      panel.classList.remove('scale-100', 'opacity-100');
+      panel.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        window.location.href = '../index.html';
+      }, 300);
+    }
+
     document.getElementById('consultation-wizard').addEventListener('submit', (e) => {
       e.preventDefault();
-      alert('Thank you! Your consultation request has been submitted. A planner will contact you shortly.');
-      window.location.href = '../index.html';
+      showSuccessModal();
     });
   </script>
 </body>

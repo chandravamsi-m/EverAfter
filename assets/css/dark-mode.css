@@ -72,3 +72,7 @@
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
+
+.dark .dark-map-iframe {
+  filter: invert(90%) hue-rotate(180deg) grayscale(10%) contrast(90%) !important;
+}
