@@ -48,7 +48,8 @@
   background-color: #1A1A18 !important;
 }
 
-.dark .bg-gray-50 {
+.dark .bg-gray-50,
+.dark .bg-primary-50 {
   background-color: #161614 !important;
 }
 
@@ -57,6 +58,7 @@
 }
 
 .dark .border-gray-100,
+.dark .border-gray-150,
 .dark .border-gray-200 {
   border-color: #2E2D2A !important;
 }

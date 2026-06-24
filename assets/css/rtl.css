@@ -32,6 +32,12 @@
   transform: translateX(100%);
 }
 
+@media (min-width: 1024px) {
+  [dir="rtl"] .lg\:translate-x-0 {
+    transform: translateX(0px);
+  }
+}
+
 /* Adjusting caret and icons alignment */
 [dir="rtl"] .chevron-icon {
   transform: scaleX(-1);

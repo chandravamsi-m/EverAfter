@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Portal | Wedding Planner & Coordinator</title>
+  <title>Admin Portal | EverAfter Wedding Planner</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -47,229 +47,921 @@
   <link rel="stylesheet" href="../assets/css/rtl.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body id="admin-dashboard-root" class="bg-primary-50 dark:bg-gray-950 min-h-screen flex transition-custom">
+<body id="admin-dashboard-root" class="bg-primary-50 dark:bg-gray-950 min-h-screen flex transition-custom text-gray-850 dark:text-gray-150">
 
-  <!-- Sidebar Component -->
-  <aside id="sidebar-drawer" class="fixed inset-y-0 left-0 z-45 w-64 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 flex flex-col justify-between transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
-    <div>
-      <div class="h-16 flex items-center px-6 border-b border-gray-100 dark:border-gray-800">
-        <span class="font-serif text-2xl font-semibold text-primary-600 dark:text-primary-400">Ever After Admin</span>
+  <!-- Sidebar Backdrop overlay for mobile -->
+  <div id="sidebar-backdrop" class="fixed inset-0 z-40 bg-gray-950/40 backdrop-blur-xs hidden lg:hidden"></div>
+
+  <!-- Sidebar Component (Logical Positioning & Consistent Logo/Logout) -->
+  <aside id="sidebar-drawer" class="fixed inset-y-0 start-0 z-50 w-[75%] lg:w-64 bg-white dark:bg-gray-900 border-e border-gray-200 dark:border-gray-800 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out">
+    <div class="h-16 flex items-center justify-between px-6 border-b border-gray-100 dark:border-gray-800">
+      <a href="../index.html" class="flex items-center gap-2 font-serif text-2xl font-bold text-primary-600 dark:text-primary-400 group">
+        <svg class="h-6 w-6 text-primary-600 dark:text-primary-400 transition-transform group-hover:scale-105" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="9" cy="13" r="4.5" />
+          <circle cx="15" cy="13" r="4.5" />
+          <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+        </svg>
+        <span>EverAfter</span>
+      </a>
+      <button id="close-sidebar-btn" class="lg:hidden text-gray-500 hover:text-gray-800 dark:hover:text-gray-250 focus:outline-none" title="Close Sidebar">
+        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+    
+    <!-- Navigation Container (Consolidated Sidebar Links + Logout right after items) -->
+    <nav class="p-4 space-y-1 overflow-y-auto flex-1">
+      <!-- Section 1: Overview -->
+      <a href="#" data-target="admin-overview" data-title="Planner Overview Dashboard" data-subtitle="Active wedding portfolios and corporate operations registry summary." class="sidebar-link flex items-center px-4 py-3 text-sm font-semibold rounded-xl bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 transition-custom">
+        <svg class="me-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+        </svg>
+        <span>Overview</span>
+      </a>
+      <!-- Section 2: Clients & Bookings -->
+      <a href="#" data-target="clients" data-title="Clients &amp; Bookings Registry" data-subtitle="Add client couples and track booking inquiry workflows." class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+        <svg class="me-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+        </svg>
+        <span>Clients &amp; Bookings</span>
+      </a>
+      <!-- Section 3: Vendor Directory -->
+      <a href="#" data-target="vendors" data-title="Vendor Directory &amp; Partners" data-subtitle="Manage registered luxury venues, photography studios, and floristry partners." class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+        <svg class="me-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+        </svg>
+        <span>Vendor Directory</span>
+      </a>
+      <!-- Section 4: Master Timeline -->
+      <a href="#" data-target="event-timeline" data-title="Master Event Timelines" data-subtitle="Track milestones and checklist completion status for all active weddings." class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+        <svg class="me-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>Master Timeline</span>
+      </a>
+      <!-- Section 5: Payments & Reports -->
+      <a href="#" data-target="payments" data-title="Payments &amp; Business Reports" data-subtitle="Manage billing invoices, track cashflow receipts, and review monthly earnings charts." class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
+        <svg class="me-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16v1M10 11h4" />
+        </svg>
+        <span>Payments &amp; Reports</span>
+      </a>
+
+      <!-- RTL & Theme Toggles for Mobile/Tablet -->
+      <div class="lg:hidden flex items-center justify-between px-4 py-3 border-t border-gray-100 dark:border-gray-800 mt-4 gap-2">
+        <span class="text-xs font-semibold text-gray-500">Preferences</span>
+        <div class="flex items-center gap-2">
+          <button class="rtl-toggle px-3 py-1.5 text-xs font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-custom" title="Toggle RTL">
+            <span>RTL</span>
+          </button>
+          <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-custom" title="Toggle theme">
+            <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+        </div>
       </div>
-      
-      <nav class="p-4 space-y-1 overflow-y-auto max-h-[calc(100vh-200px)]">
-        <a href="#" data-target="admin-overview" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl bg-primary-50 text-primary-600 dark:bg-primary-900/20 dark:text-primary-400 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-          </svg>
-          Overview
-        </a>
-        <a href="#" data-target="clients" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
-          </svg>
-          Client Management
-        </a>
-        <a href="#" data-target="vendors" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-          </svg>
-          Vendor Management
-        </a>
-        <a href="#" data-target="bookings" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-          </svg>
-          Booking Management
-        </a>
-        <a href="#" data-target="event-timeline" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Master Timeline
-        </a>
-        <a href="#" data-target="content-management" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-          </svg>
-          Content (Portfolio)
-        </a>
-        <a href="#" data-target="payments" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16v1M10 11h4" />
-          </svg>
-          Payments & Invoices
-        </a>
-        <a href="#" data-target="reports" class="sidebar-link flex items-center px-4 py-3 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-custom">
-          <svg class="mr-3 h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-          </svg>
-          Reports & Analytics
-        </a>
-      </nav>
-    </div>
 
-    <div class="p-4 border-t border-gray-100 dark:border-gray-800">
-      <a href="#" data-target="settings" class="sidebar-link flex items-center px-4 py-2.5 text-sm font-medium rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800/50 mb-1 transition-custom">
-        Settings
-      </a>
-      <a href="../index.html" class="flex items-center px-4 py-2.5 text-sm font-medium rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-custom">
-        Logout
-      </a>
-    </div>
+      <!-- Logout option right after items in sidebar -->
+      <div class="pt-4 border-t border-gray-100 dark:border-gray-800 mt-4">
+        <a href="../index.html" class="flex items-center px-4 py-3 text-sm font-semibold rounded-xl text-red-600 hover:bg-red-50 dark:hover:bg-red-950/20 transition-custom">
+          <svg class="me-3 h-5 w-5 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+          </svg>
+          <span>Logout</span>
+        </a>
+      </div>
+    </nav>
   </aside>
 
-  <!-- Main Content Grid -->
-  <div class="flex-1 lg:pl-64 flex flex-col min-w-0">
-    <header class="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 sticky top-0 z-40">
-      <div class="flex items-center">
+  <!-- Main Content Shell (Logical Spacing padding-inline-start) -->
+  <div class="flex-1 lg:ps-64 flex flex-col min-w-0">
+    
+    <!-- Top Header Navigation -->
+    <header class="h-16 bg-white/85 dark:bg-gray-900/85 backdrop-blur-md border-b border-gray-200 dark:border-gray-800 flex items-center justify-between px-6 sticky top-0 z-30">
+      <div class="flex items-center gap-3">
         <button id="toggle-sidebar-btn" class="lg:hidden text-gray-600 dark:text-gray-400 hover:text-gray-900 focus:outline-none">
           <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
+        <!-- Mobile Logo -->
+        <a href="../index.html" class="flex lg:hidden items-center gap-1.5 font-serif text-xl font-bold text-primary-600 dark:text-primary-400">
+          <svg class="h-6 w-6 text-primary-600 dark:text-primary-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="13" r="4.5" />
+            <circle cx="15" cy="13" r="4.5" />
+            <path d="M15 8.5l1.5-1.5L15 5.5 13.5 7z" fill="currentColor" stroke-width="0.5" />
+          </svg>
+          <span>EverAfter</span>
+        </a>
+        <div class="hidden md:block">
+          <h1 class="font-serif text-lg font-semibold text-gray-900 dark:text-white">Planner Overview Dashboard</h1>
+          <p class="text-[10px] text-gray-500">Active wedding portfolios and corporate operations registry summary.</p>
+        </div>
       </div>
 
-      <div class="flex items-center space-x-4">
-        <button class="rtl-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400" title="Toggle RTL">
-          <span class="text-xs font-bold">RTL</span>
+      <div class="flex items-center gap-4">
+        <!-- RTL Toggle -->
+        <button class="rtl-toggle hidden lg:inline-flex px-3 py-1.5 text-xs font-bold text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg transition-custom" title="Toggle RTL">
+          <span>RTL</span>
         </button>
-        <button class="theme-toggle p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400" title="Toggle theme">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle hidden lg:inline-flex p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-600 dark:text-gray-400 transition-custom" title="Toggle theme">
           <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
           </svg>
         </button>
-        <div class="flex items-center">
-          <img src="../assets/images/admin_avatar.png" alt="Admin Avatar" class="h-8 w-8 rounded-full border border-primary-500">
-          <span class="ml-2 hidden sm:block text-sm font-semibold text-gray-700 dark:text-gray-300">Sophia Sterling</span>
+        <div class="flex items-center border-s border-gray-200 dark:border-gray-800 ps-4">
+          <img src="../assets/images/admin_avatar.png" alt="Admin Avatar" class="h-8 w-8 rounded-full border border-primary-500 object-cover">
+          <span class="ms-2.5 hidden sm:block text-sm font-semibold text-gray-700 dark:text-gray-300">Sophia Sterling</span>
         </div>
       </div>
     </header>
 
-    <main class="flex-1 p-6 overflow-y-auto">
+    <!-- Main Dynamic Section Viewport -->
+    <main class="flex-1 p-6 overflow-y-auto space-y-6">
 
-      <!-- SECTION 1: OVERVIEW -->
+      <!-- PANEL 1: OVERVIEW -->
       <section id="admin-overview" class="dashboard-section space-y-6">
-        <div>
-          <h1 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Planner Overview Dashboard</h1>
-          <p class="text-sm text-gray-600 dark:text-gray-400">Total wedding portfolios and operations registry summary.</p>
+
+        <!-- Stat Metric Cards with Premium Icons -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <!-- Card 1: Active Couples -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Active Couples</span>
+              <span class="p-2 rounded-xl bg-primary-50 dark:bg-primary-950/20 text-primary-600 dark:text-primary-400">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="mt-4">
+              <div id="stat-active-clients" class="text-3xl font-bold text-gray-900 dark:text-white">4</div>
+              <p class="text-[10px] text-green-650 mt-1 flex items-center gap-1">
+                <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                <span>+2 new this week</span>
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2: Upcoming Weddings -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Upcoming Weddings</span>
+              <span class="p-2 rounded-xl bg-primary-50 dark:bg-primary-950/20 text-primary-600 dark:text-primary-400">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                </svg>
+              </span>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl font-bold text-gray-900 dark:text-white">3</div>
+              <p class="text-[10px] text-primary-600 mt-1">Next 120 Days schedules</p>
+            </div>
+          </div>
+
+          <!-- Card 3: Active Vendors -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Active Vendors</span>
+              <span class="p-2 rounded-xl bg-primary-50 dark:bg-primary-950/20 text-primary-600 dark:text-primary-400">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+              </span>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl font-bold text-gray-900 dark:text-white">6</div>
+              <p class="text-[10px] text-gray-550 mt-1">Across luxury categories</p>
+            </div>
+          </div>
+
+          <!-- Card 4: Payments Outstanding -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
+            <div class="flex items-center justify-between">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-gray-400">Outstanding Receivables</span>
+              <span class="p-2 rounded-xl bg-primary-50 dark:bg-primary-950/20 text-primary-600 dark:text-primary-400">
+                <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M12 16v1M10 11h4"/>
+                </svg>
+              </span>
+            </div>
+            <div class="mt-4">
+              <div class="text-3xl font-bold text-gray-900 dark:text-white">$12,000</div>
+              <p class="text-[10px] text-amber-600 mt-1">1 awaiting approval</p>
+            </div>
+          </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
-            <div class="text-sm font-medium text-gray-500">Active Couples</div>
-            <div id="stat-active-clients" class="mt-2 text-3xl font-bold text-gray-950 dark:text-white">18</div>
-            <div class="mt-1 text-xs text-green-600">+2 new this week</div>
+        <!-- Expanded Main Dashboard Panels -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          
+          <!-- Column 1: Tasks & Upcoming Weddings (span 2) -->
+          <div class="lg:col-span-2 space-y-6">
+            
+            <!-- Quick Actions Panel -->
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm space-y-4">
+              <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Coordinator Quick Actions</h3>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400">3 Pending Actions</span>
+              </div>
+              
+              <div class="divide-y divide-gray-100 dark:divide-gray-800">
+                <!-- Action 1 -->
+                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-amber-50 text-amber-700 dark:bg-amber-950/20 dark:text-amber-400">Review</span>
+                    <div class="space-y-0.5">
+                      <p class="text-sm font-semibold text-gray-905 dark:text-white">Venue reservation deposit invoice check</p>
+                      <p class="text-[10px] text-gray-500">Emma &amp; Liam &bull; Napa Chateau Grand &bull; Nov 12, 2026</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2 justify-end w-full sm:w-auto">
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-lg shadow-sm transition-all" onclick="this.closest('.py-4').remove()">Approve</button>
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="this.closest('.py-4').remove()">Dismiss</button>
+                  </div>
+                </div>
+
+                <!-- Action 2 -->
+                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-primary-50 text-primary-700 dark:bg-primary-950/20 dark:text-primary-400">Inquiry</span>
+                    <div class="space-y-0.5">
+                      <p class="text-sm font-semibold text-gray-905 dark:text-white">Tasting consultation scheduling</p>
+                      <p class="text-[10px] text-gray-500">Alex &amp; Taylor &bull; Savory Palette Food Co. &bull; Nov 08, 2026</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2 justify-end w-full sm:w-auto">
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-lg shadow-sm transition-all" onclick="this.closest('.py-4').remove()">Notify</button>
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="this.closest('.py-4').remove()">Dismiss</button>
+                  </div>
+                </div>
+
+                <!-- Action 3 -->
+                <div class="py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div class="flex items-start gap-3">
+                    <span class="mt-0.5 inline-flex items-center px-2 py-0.5 rounded-md text-[10px] font-bold bg-red-50 text-red-750 dark:bg-red-950/20 dark:text-red-400">Urgent</span>
+                    <div class="space-y-0.5">
+                      <p class="text-sm font-semibold text-gray-905 dark:text-white">Approve Caterer Deposit &amp; Release Funds</p>
+                      <p class="text-[10px] text-gray-500">Clara &amp; Marcus &bull; Savory Palette Food Co. &bull; Oct 24, 2026</p>
+                    </div>
+                  </div>
+                  <div class="flex gap-2 justify-end w-full sm:w-auto">
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider text-white bg-green-600 hover:bg-green-700 rounded-lg shadow-sm transition-all" onclick="this.closest('.py-4').remove()">Approve</button>
+                    <button class="px-3 py-1.5 text-[10px] font-bold uppercase tracking-wider border border-gray-200 dark:border-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg transition-all" onclick="this.closest('.py-4').remove()">Dismiss</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Upcoming Weddings Schedule -->
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm space-y-4">
+              <div class="flex justify-between items-center border-b border-gray-100 dark:border-gray-800 pb-3">
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Active Wedding Portfolios</h3>
+                <span class="text-xs text-gray-500">Sorted by proximity</span>
+              </div>
+              
+              <div class="space-y-4">
+                <!-- Wedding 1 -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/40 border border-gray-150/50 dark:border-gray-800/60">
+                  <div class="space-y-1">
+                    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Clara &amp; Marcus's Oceanside Wedding</h4>
+                    <p class="text-[10px] text-gray-500 dark:text-gray-400">Date: Oct 24, 2026 &bull; Location: Cliffside Resort Banquet</p>
+                  </div>
+                  <div class="flex items-center gap-4 w-full sm:w-auto">
+                    <div class="text-end">
+                      <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">75% Completed</p>
+                      <p class="text-[9px] text-green-600 dark:text-green-400">21/28 milestones done</p>
+                    </div>
+                    <div class="w-24 bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+                      <div class="bg-green-500 h-1.5 rounded-full" style="width: 75%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Wedding 2 -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/40 border border-gray-150/50 dark:border-gray-800/60">
+                  <div class="space-y-1">
+                    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Alex &amp; Taylor's Wedding Curation</h4>
+                    <p class="text-[10px] text-gray-500 dark:text-gray-400">Date: Nov 08, 2026 &bull; Location: Vineyard Estate Venue</p>
+                  </div>
+                  <div class="flex items-center gap-4 w-full sm:w-auto">
+                    <div class="text-end">
+                      <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">42% Completed</p>
+                      <p class="text-[9px] text-primary-600 dark:text-primary-400">12/28 milestones done</p>
+                    </div>
+                    <div class="w-24 bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+                      <div class="bg-primary-500 h-1.5 rounded-full" style="width: 42%"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Wedding 3 -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 rounded-xl bg-gray-50/50 dark:bg-gray-950/40 border border-gray-150/50 dark:border-gray-800/60">
+                  <div class="space-y-1">
+                    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Emma &amp; Liam's Luxury Chateau Wedding</h4>
+                    <p class="text-[10px] text-gray-500 dark:text-gray-400">Date: Jun 14, 2027 &bull; Location: Napa Chateau Grand</p>
+                  </div>
+                  <div class="flex items-center gap-4 w-full sm:w-auto">
+                    <div class="text-end">
+                      <p class="text-xs font-semibold text-gray-700 dark:text-gray-300">10% Completed</p>
+                      <p class="text-[9px] text-amber-600 dark:text-amber-400">3/28 milestones done</p>
+                    </div>
+                    <div class="w-24 bg-gray-200 dark:bg-gray-800 rounded-full h-1.5">
+                      <div class="bg-primary-500 h-1.5 rounded-full" style="width: 10%"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
-            <div class="text-sm font-medium text-gray-500">Upcoming Weddings</div>
-            <div class="mt-2 text-3xl font-bold text-gray-950 dark:text-white">8</div>
-            <div class="mt-1 text-xs text-primary-600">Next 60 Days</div>
+
+          <!-- Column 2: Activity Feed & Planners Notepad (span 1) -->
+          <div class="space-y-6">
+            
+            <!-- Polished Activity Feed -->
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm space-y-4">
+              <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white pb-2 border-b border-gray-100 dark:border-gray-800">Recent Activity Feed</h3>
+              <div class="space-y-4 text-xs">
+                <!-- Activity item -->
+                <div class="flex gap-3 relative pb-1">
+                  <div class="h-2 w-2 rounded-full bg-green-500 mt-1.5 z-10"></div>
+                  <div class="space-y-0.5">
+                    <p class="font-semibold text-gray-900 dark:text-white">New inquiry registered</p>
+                    <p class="text-[10px] text-gray-400">Maya &amp; Jay &bull; Oct 2027</p>
+                  </div>
+                </div>
+                <!-- Activity item -->
+                <div class="flex gap-3 relative pb-1">
+                  <div class="h-2 w-2 rounded-full bg-primary-500 mt-1.5 z-10"></div>
+                  <div class="space-y-0.5">
+                    <p class="font-semibold text-gray-900 dark:text-white">Invoice INV-2026-089 marked as Paid</p>
+                    <p class="text-[10px] text-gray-400">Alex &amp; Taylor &bull; 2 hours ago</p>
+                  </div>
+                </div>
+                <!-- Activity item -->
+                <div class="flex gap-3 relative">
+                  <div class="h-2 w-2 rounded-full bg-amber-500 mt-1.5 z-10"></div>
+                  <div class="space-y-0.5">
+                    <p class="font-semibold text-gray-900 dark:text-white">Florist contract updated</p>
+                    <p class="text-[10px] text-gray-400">Blossom &amp; Vine quote revision uploaded</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Planners Notepad Scratchpad -->
+            <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm space-y-4">
+              <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white pb-2 border-b border-gray-100 dark:border-gray-800">Coordinators scratchpad</h3>
+              <textarea id="planner-scratchpad" placeholder="Draft reminders, checklist items, or tasting menu details here..." class="w-full h-32 p-3 text-xs border border-gray-200 dark:border-gray-800 rounded-xl bg-transparent text-gray-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500 resize-none"></textarea>
+              <div class="flex justify-between items-center text-[10px] text-gray-400">
+                <span>Auto-saves to browser session</span>
+                <button onclick="document.getElementById('planner-scratchpad').value = ''" class="hover:text-red-500 transition-colors font-semibold uppercase">Clear</button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- SECTION 2: CLIENT MANAGEMENT -->
+      <!-- PANEL 2: CLIENTS & BOOKINGS -->
       <section id="clients" class="dashboard-section hidden space-y-6">
-        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-          <div>
-            <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Active Couple Accounts</h2>
-            <p class="text-sm text-gray-600 dark:text-gray-400">Add, view, and update client registry files.</p>
-          </div>
-          <button onclick="document.getElementById('add-client-panel').classList.toggle('hidden')" class="px-5 py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl transition-custom">Add Client Profile</button>
+        <div class="flex justify-between items-center border-b border-gray-150 dark:border-gray-800 pb-3">
+          <h2 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Clients &amp; Bookings Registry</h2>
+          <button id="toggle-add-client-btn" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-sm">
+            <span>+ Add Couple</span>
+          </button>
         </div>
 
         <div id="add-client-panel" class="hidden bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
-          <form id="add-client-form" class="grid grid-cols-1 sm:grid-cols-4 gap-4 items-end">
+          <h3 class="font-serif text-base font-bold text-gray-900 dark:text-white border-b border-gray-100 dark:border-gray-800 pb-2">Register Client Couple</h3>
+          <form id="add-client-form" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 items-end">
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase">Couple Names</label>
-              <input id="client-couple" type="text" required placeholder="Emma & Liam" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+              <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Couple Names</label>
+              <input id="client-couple" type="text" required placeholder="Emma &amp; Liam" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase">Wedding Date</label>
-              <input id="client-date" type="date" required class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+              <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Wedding Date</label>
+              <input id="client-date" type="date" required class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase">Estimated Budget ($)</label>
-              <input id="client-budget" type="number" required placeholder="45000" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm">
+              <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Estimated Budget ($)</label>
+              <input id="client-budget" type="number" required placeholder="45000" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
             </div>
             <div>
-              <label class="block text-xs font-semibold text-gray-500 uppercase">Planning Stage</label>
-              <select id="client-stage" class="w-full mt-1 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm">
+              <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Planning Stage</label>
+              <select id="client-stage" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
                 <option value="Initial Planning">Initial Planning</option>
                 <option value="Negotiation">Negotiation</option>
+                <option value="Contract Finalized">Contract Finalized</option>
               </select>
             </div>
-            <div class="sm:col-span-4 text-right">
-              <button type="submit" class="px-5 py-2.5 text-sm font-semibold text-white bg-primary-600 hover:bg-primary-700 rounded-xl">Save Profile</button>
+            <div class="sm:col-span-2 lg:col-span-4 flex justify-end gap-3 mt-2">
+              <button type="button" id="cancel-client-btn" class="px-4 py-2.5 text-xs font-bold uppercase tracking-wider border border-gray-200 dark:border-gray-800 text-gray-700 dark:text-gray-300 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-800 transition-all">Cancel</button>
+              <button type="submit" class="px-6 py-2.5 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-md">Save Profile</button>
             </div>
           </form>
         </div>
 
-        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden">
-          <table class="w-full text-left border-collapse">
-            <thead>
-              <tr class="bg-gray-50 dark:bg-gray-800/40 text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase">
-                <th class="py-3 px-4">Couple</th>
-                <th class="py-3 px-4">Wedding Date</th>
-                <th class="py-3 px-4">Budget</th>
-                <th class="py-3 px-4">Planning Stage</th>
-              </tr>
-            </thead>
-            <tbody id="client-list-table">
-              <tr class="border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300">
-                <td class="py-3 px-4 font-semibold text-gray-900 dark:text-white">Alex & Taylor</td>
-                <td class="py-3 px-4">Nov 08, 2026</td>
-                <td class="py-3 px-4">$50,000</td>
-                <td class="py-3 px-4">Mid-Stage</td>
-              </tr>
-            </tbody>
-          </table>
+        <!-- Inquiry Pipeline status tracker / kanban summary metrics -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-150 dark:border-gray-800 shadow-xs text-center">
+            <span class="text-[10px] text-gray-400 uppercase font-semibold">New Inquiries</span>
+            <p class="text-2xl font-bold text-gray-950 dark:text-white mt-1">14</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-150 dark:border-gray-800 shadow-xs text-center">
+            <span class="text-[10px] text-gray-400 uppercase font-semibold text-amber-600">In Consultation</span>
+            <p class="text-2xl font-bold text-amber-650 mt-1">8</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-150 dark:border-gray-800 shadow-xs text-center">
+            <span class="text-[10px] text-gray-400 uppercase font-semibold text-blue-600">Contracts Sent</span>
+            <p class="text-2xl font-bold text-blue-650 mt-1">4</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-4 rounded-xl border border-gray-150 dark:border-gray-800 shadow-xs text-center">
+            <span class="text-[10px] text-gray-400 uppercase font-semibold text-green-600">Booked &amp; Confirmed</span>
+            <p class="text-2xl font-bold text-green-600 mt-1">18</p>
+          </div>
+        </div>
+
+        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse flex flex-col md:table">
+              <thead class="hidden md:table-header-group">
+                <tr class="bg-gray-50 dark:bg-gray-800/40 text-[10px] font-bold text-gray-400 dark:text-gray-450 uppercase tracking-wider">
+                  <th class="py-4 px-6 text-start">Couple</th>
+                  <th class="py-4 px-6 text-start">Wedding Date</th>
+                  <th class="py-4 px-6 text-start">Budget</th>
+                  <th class="py-4 px-6 text-start">Planning Stage</th>
+                  <th class="py-4 px-6 text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody id="client-list-table" class="flex flex-col md:table-row-group">
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Couple:</span>
+                    <span>Alex &amp; Taylor</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Wedding Date:</span>
+                    <span>Nov 08, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Budget:</span>
+                    <span>$50,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Planning Stage:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400">Mid-Stage Planning</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-405 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-client-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Couple:</span>
+                    <span>Emma &amp; Liam</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Wedding Date:</span>
+                    <span>Jun 14, 2027</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Budget:</span>
+                    <span>$65,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Planning Stage:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">Negotiation</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-405 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-client-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Couple:</span>
+                    <span>Clara &amp; Marcus</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Wedding Date:</span>
+                    <span>Oct 24, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Budget:</span>
+                    <span>$42,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Planning Stage:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Contract Finalized</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-405 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-client-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Couple:</span>
+                    <span>Sophia &amp; Julian</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Wedding Date:</span>
+                    <span>Sep 18, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Budget:</span>
+                    <span>$55,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Planning Stage:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Contract Finalized</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-405 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-client-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </section>
 
-      <!-- SECTION 3: VENDOR MANAGEMENT -->
+      <!-- PANEL 3: VENDOR DIRECTORY -->
       <section id="vendors" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Vendor Directory & Partners</h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <!-- Vendor Card 1 -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Venues</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">Grand Belle Chateau</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Preferred Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: contact@grandbellechateau.com</p>
+              <p>Phone: +1 555-019-2830</p>
+              <p>Location: Napa Valley, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.9 <span class="text-gray-400 font-normal">(42 bookings)</span></span>
+              <a href="mailto:contact@grandbellechateau.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Vendor Card 2 -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Photography</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">Golden Hour Studios</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Preferred Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: team@goldenhourstudios.com</p>
+              <p>Phone: +1 555-032-1928</p>
+              <p>Location: San Francisco, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.8 <span class="text-gray-400 font-normal">(28 bookings)</span></span>
+              <a href="mailto:team@goldenhourstudios.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Vendor Card 3 -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Florals &amp; Decor</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">Fleur Design Co.</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300">Standard Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: hello@fleurdesignco.com</p>
+              <p>Phone: +1 555-045-8833</p>
+              <p>Location: Napa Valley, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.7 <span class="text-gray-400 font-normal">(19 bookings)</span></span>
+              <a href="mailto:hello@fleurdesignco.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Vendor Card 4 (Added) -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Catering</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">Savory Palette Food Co.</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Preferred Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: chef@savorypalette.com</p>
+              <p>Phone: +1 555-067-1249</p>
+              <p>Location: Sonoma, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.9 <span class="text-gray-400 font-normal">(34 bookings)</span></span>
+              <a href="mailto:chef@savorypalette.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Vendor Card 5 (Added) -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Music &amp; Entertainment</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">SoundWave DJ Crew</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300">Standard Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: gigs@soundwavecrew.com</p>
+              <p>Phone: +1 555-098-1123</p>
+              <p>Location: Oakland, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.6 <span class="text-gray-400 font-normal">(15 bookings)</span></span>
+              <a href="mailto:gigs@soundwavecrew.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Vendor Card 6 (Added) -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4">
+            <div class="flex justify-between items-start">
+              <div>
+                <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">Attire</span>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">Bella Bridal Boutique</h3>
+              </div>
+              <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Preferred Partner</span>
+            </div>
+            <div class="text-xs text-gray-500 space-y-1">
+              <p>Email: salon@bellabridal.com</p>
+              <p>Phone: +1 555-345-6789</p>
+              <p>Location: Los Angeles, CA</p>
+            </div>
+            <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+              <span class="text-amber-500 font-bold">&#9733; 4.9 <span class="text-gray-400 font-normal">(38 bookings)</span></span>
+              <a href="mailto:salon@bellabridal.com" class="text-primary-600 hover:text-primary-700 font-semibold transition-custom">Contact Partner &rarr;</a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SECTION 4: BOOKING MANAGEMENT -->
-      <section id="bookings" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Bookings registry</h2>
-        </div>
-      </section>
-
-      <!-- SECTION 5: MASTER TIMELINE -->
+      <!-- PANEL 4: MASTER TIMELINE -->
       <section id="event-timeline" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Planner Master Calendar</h2>
+
+        <div class="space-y-4">
+          <!-- Timeline Entry 1 -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Alex &amp; Taylor's Wedding Curation</h3>
+                <p class="text-xs text-gray-500">Wedding Date: Nov 08, 2026 | Vineyard Estate Venue</p>
+              </div>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400">142 Days Remaining</span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-400">
+                <span>Checklist Milestones Done</span>
+                <span>12 of 28 Tasks (42%)</span>
+              </div>
+              <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 42%"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-2 text-xs">
+              <span class="text-gray-500">Next Action: Finalize catering menu options</span>
+              <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold">Inspect Checklist &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Timeline Entry 2 -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Emma &amp; Liam's Luxury Chateau Wedding</h3>
+                <p class="text-xs text-gray-500">Wedding Date: Jun 14, 2027 | Napa Chateau Grand</p>
+              </div>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-gray-100 text-gray-600 dark:bg-gray-800 dark:text-gray-400">355 Days Remaining</span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-400">
+                <span>Checklist Milestones Done</span>
+                <span>3 of 28 Tasks (10%)</span>
+              </div>
+              <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div class="bg-primary-600 h-2 rounded-full" style="width: 10%"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-2 text-xs">
+              <span class="text-gray-500">Next Action: Secure deposit payment and vendor contracts</span>
+              <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold">Inspect Checklist &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Timeline Entry 3 (Added) -->
+          <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+              <div>
+                <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Clara &amp; Marcus's Oceanside Wedding</h3>
+                <p class="text-xs text-gray-500">Wedding Date: Oct 24, 2026 | Cliffside Resort Banquet</p>
+              </div>
+              <span class="text-xs font-semibold px-3 py-1 rounded-full bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400">127 Days Remaining</span>
+            </div>
+            <div class="space-y-2">
+              <div class="flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-400">
+                <span>Checklist Milestones Done</span>
+                <span>21 of 28 Tasks (75%)</span>
+              </div>
+              <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+                <div class="bg-green-600 h-2 rounded-full" style="width: 75%"></div>
+              </div>
+            </div>
+            <div class="flex justify-between items-center pt-2 text-xs">
+              <span class="text-gray-500">Next Action: Draft finalized floorplan seating maps</span>
+              <a href="#" class="text-primary-600 hover:text-primary-700 font-semibold">Inspect Checklist &rarr;</a>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- SECTION 6: CONTENT MANAGEMENT -->
-      <section id="content-management" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Content & Showcases</h2>
-        </div>
-      </section>
-
-      <!-- SECTION 7: PAYMENTS -->
+      <!-- PANEL 5: PAYMENTS & REPORTS -->
       <section id="payments" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Payments & Invoicing</h2>
-        </div>
-      </section>
 
-      <!-- SECTION 8: REPORTS -->
-      <section id="reports" class="dashboard-section hidden space-y-6">
-        <div>
-          <h2 class="font-serif text-3xl font-semibold text-gray-900 dark:text-white">Business reports & Analytics</h2>
+        <!-- Analytical Statistics Cards (Added) -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div class="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-xs">
+            <span class="text-xs text-gray-400 font-semibold uppercase">Gross Annual Revenue</span>
+            <p class="text-2xl font-bold text-gray-950 dark:text-white mt-1">$390,500</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-xs">
+            <span class="text-xs text-gray-400 font-semibold uppercase">Pending Outstanding Receivables</span>
+            <p class="text-2xl font-bold text-amber-600 mt-1">$12,400</p>
+          </div>
+          <div class="bg-white dark:bg-gray-900 p-5 rounded-xl border border-gray-100 dark:border-gray-800 shadow-xs">
+            <span class="text-xs text-gray-400 font-semibold uppercase">Invoice Collection Rate</span>
+            <p class="text-2xl font-bold text-green-600 mt-1">98.2%</p>
+          </div>
         </div>
-        <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm">
-          <div class="h-80">
-            <canvas id="adminRevenueChart"></canvas>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <!-- Analytical Chart Column -->
+          <div class="lg:col-span-2 bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-4">
+            <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Monthly Revenue Analytics</h3>
+            <div class="h-64 relative">
+              <canvas id="adminRevenueChart"></canvas>
+            </div>
+          </div>
+
+          <!-- Create Invoice Form -->
+          <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-4 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Generate Client Invoice</h3>
+              <form id="add-invoice-form" class="space-y-3.5 mt-4">
+                <div>
+                  <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Select Couple</label>
+                  <select id="invoice-client" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-sm text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
+                    <option value="Alex &amp; Taylor">Alex &amp; Taylor</option>
+                    <option value="Emma &amp; Liam">Emma &amp; Liam</option>
+                    <option value="Clara &amp; Marcus">Clara &amp; Marcus</option>
+                    <option value="Sophia &amp; Julian">Sophia &amp; Julian</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Invoice Amount ($)</label>
+                  <input id="invoice-amount" type="number" required placeholder="5000" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
+                </div>
+                <div>
+                  <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider">Invoice Purpose</label>
+                  <input id="invoice-purpose" type="text" required placeholder="Catering Tasting Deposit" class="w-full mt-1.5 px-3 py-2 border border-gray-200 dark:border-gray-800 rounded-xl text-sm bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
+                </div>
+                <button type="submit" class="w-full py-2.5 text-xs font-bold uppercase tracking-widest text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-md mt-2">Issue Invoice</button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Payments Registry Invoices Table -->
+        <div class="bg-white dark:bg-gray-900 rounded-2xl border border-gray-150 dark:border-gray-800 shadow-sm overflow-hidden">
+          <div class="p-4 border-b border-gray-100 dark:border-gray-800">
+            <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">Recent Invoice Registers</h3>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse flex flex-col md:table">
+              <thead class="hidden md:table-header-group">
+                <tr class="bg-gray-50 dark:bg-gray-800/40 text-[10px] font-bold text-gray-400 dark:text-gray-450 uppercase tracking-wider">
+                  <th class="py-4 px-6">Invoice ID</th>
+                  <th class="py-4 px-6">Client</th>
+                  <th class="py-4 px-6">Purpose</th>
+                  <th class="py-4 px-6">Amount</th>
+                  <th class="py-4 px-6">Due Date</th>
+                  <th class="py-4 px-6">Status</th>
+                  <th class="py-4 px-6 text-end">Action</th>
+                </tr>
+              </thead>
+              <tbody id="invoice-list-table" class="flex flex-col md:table-row-group">
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
+                    <span>INV-2026-089</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
+                    <span>Alex &amp; Taylor</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
+                    <span>Coordination Deposit</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
+                    <span>$5,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
+                    <span>Jul 12, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Paid</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
+                    <span>INV-2026-092</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
+                    <span>Emma &amp; Liam</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
+                    <span>Venue Reservation</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
+                    <span>$12,000</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
+                    <span>Aug 15, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">Awaiting Approval</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
+                    <span>INV-2026-095</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
+                    <span>Clara &amp; Marcus</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
+                    <span>Catering Initial Retainer</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
+                    <span>$4,500</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
+                    <span>Sep 10, 2026</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Paid</span>
+                  </td>
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                    <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+                    <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </section>

@@ -50,6 +50,28 @@ function toggleTheme() {
     localStorage.setItem('theme', 'dark');
   }
   updateThemeIcons();
+
+  // Update active Chart.js colors dynamically on theme switch
+  if (window.activeCharts) {
+    window.activeCharts.forEach(chart => {
+      const darkEnabled = document.documentElement.classList.contains('dark');
+      if (chart.config.type === 'doughnut') {
+        if (chart.options.plugins && chart.options.plugins.legend && chart.options.plugins.legend.labels) {
+          chart.options.plugins.legend.labels.color = darkEnabled ? '#FAF6F0' : '#1A1A18';
+        }
+      } else if (chart.config.type === 'line') {
+        if (chart.options.scales) {
+          if (chart.options.scales.x && chart.options.scales.x.ticks) {
+            chart.options.scales.x.ticks.color = darkEnabled ? '#FAF6F0' : '#605E5A';
+          }
+          if (chart.options.scales.y && chart.options.scales.y.ticks) {
+            chart.options.scales.y.ticks.color = darkEnabled ? '#FAF6F0' : '#605E5A';
+          }
+        }
+      }
+      chart.update();
+    });
+  }
 }
 
 function initDirection() {
@@ -193,21 +215,81 @@ function initDashboardTabs() {
         }
       });
 
-      // Mobile: collapse sidebar drawer
-      const sidebarDrawer = document.getElementById('sidebar-drawer');
-      if (sidebarDrawer && !sidebarDrawer.classList.contains('-translate-x-full')) {
-        sidebarDrawer.classList.add('-translate-x-full');
+      // Force Chart.js to recalculate dimensions and redraw now that container is visible
+      if (window.activeCharts) {
+        window.activeCharts.forEach(chart => {
+          chart.resize();
+          chart.update();
+        });
       }
+
+      // Scroll viewport back to the top
+      window.scrollTo(0, 0);
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      const mainContainer = document.querySelector('main');
+      if (mainContainer) {
+        mainContainer.scrollTop = 0;
+      }
+
+      // Update dynamic header text
+      const headerTitle = document.querySelector('header h1');
+      const headerSubtitle = document.querySelector('header p');
+      const newTitle = link.getAttribute('data-title');
+      const newSubtitle = link.getAttribute('data-subtitle');
+      if (headerTitle && newTitle) {
+        headerTitle.textContent = newTitle;
+      }
+      if (headerSubtitle && newSubtitle) {
+        headerSubtitle.textContent = newSubtitle;
+      }
+
+      // Mobile: collapse sidebar drawer
+      closeSidebar();
     });
   });
 
   // Mobile Drawer Toggle
   const toggleDrawerBtn = document.getElementById('toggle-sidebar-btn');
   const sidebarDrawer = document.getElementById('sidebar-drawer');
+  const sidebarBackdrop = document.getElementById('sidebar-backdrop');
+
+  function closeSidebar() {
+    if (sidebarDrawer) {
+      sidebarDrawer.classList.add('-translate-x-full');
+    }
+    if (sidebarBackdrop) {
+      sidebarBackdrop.classList.add('hidden');
+    }
+  }
+
+  function openSidebar() {
+    if (sidebarDrawer) {
+      sidebarDrawer.classList.remove('-translate-x-full');
+    }
+    if (sidebarBackdrop) {
+      sidebarBackdrop.classList.remove('hidden');
+    }
+  }
+
   if (toggleDrawerBtn && sidebarDrawer) {
-    toggleDrawerBtn.addEventListener('click', () => {
-      sidebarDrawer.classList.toggle('-translate-x-full');
+    toggleDrawerBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (sidebarDrawer.classList.contains('-translate-x-full')) {
+        openSidebar();
+      } else {
+        closeSidebar();
+      }
     });
+  }
+
+  const closeDrawerBtn = document.getElementById('close-sidebar-btn');
+  if (closeDrawerBtn) {
+    closeDrawerBtn.addEventListener('click', closeSidebar);
+  }
+
+  if (sidebarBackdrop) {
+    sidebarBackdrop.addEventListener('click', closeSidebar);
   }
 }
 
@@ -215,37 +297,76 @@ function initDashboardTabs() {
 function initUserDashboardFeatures() {
   if (!document.getElementById('user-dashboard-root')) return;
 
-  // Chart setup
-  const budgetCtx = document.getElementById('userBudgetChart');
-  if (budgetCtx && typeof Chart !== 'undefined') {
-    new Chart(budgetCtx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Venue & Catering', 'Photography', 'Florals & Decor', 'Attire', 'Music & Entertainment', 'Miscellaneous'],
-        datasets: [{
-          data: [15000, 4200, 3500, 2800, 2500, 1500],
-          backgroundColor: ['#B28259', '#7A8E85', '#E6D2BF', '#C29B77', '#A3B899', '#D1CDC6'],
-          borderWidth: 0
-        }]
-      },
-      options: {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'bottom',
-            labels: {
-              color: document.documentElement.classList.contains('dark') ? '#FAF6F0' : '#1A1A18',
-              font: { family: 'Plus Jakarta Sans', size: 12 }
-            }
-          }
-        }
-      }
-    });
-  }
-
   // Add Expense form
   const expenseForm = document.getElementById('add-expense-form');
   const expenseList = document.getElementById('expense-list');
+
+  function updateBudgetCalculations() {
+    if (!expenseList) return;
+    const totalLimit = 50000;
+    let totalAllocated = 0;
+    
+    const categoryTotals = {
+      'Venue & Catering': 0,
+      'Photography': 0,
+      'Florals & Decor': 0,
+      'Attire': 0,
+      'Music & Entertainment': 0,
+      'Miscellaneous': 0
+    };
+
+    const rows = expenseList.querySelectorAll('tr');
+    rows.forEach(row => {
+      const categoryCell = row.cells[1];
+      const amountCell = row.cells[2];
+      if (categoryCell && amountCell) {
+        const category = categoryCell.textContent.trim();
+        const amount = parseFloat(amountCell.textContent.replace(/[^0-9.]/g, '')) || 0;
+        totalAllocated += amount;
+        if (categoryTotals.hasOwnProperty(category)) {
+          categoryTotals[category] += amount;
+        }
+      }
+    });
+
+    const remaining = totalLimit - totalAllocated;
+    const percentage = totalLimit > 0 ? Math.round((totalAllocated / totalLimit) * 100) : 0;
+
+    const statUsed = document.getElementById('stat-budget-used');
+    const statRemaining = document.getElementById('stat-budget-remaining');
+    const overviewUsed = document.getElementById('overview-budget-used');
+    const overviewSubtext = document.getElementById('overview-budget-subtext');
+
+    if (statUsed) statUsed.innerText = `$${totalAllocated.toLocaleString()}`;
+    if (statRemaining) {
+      statRemaining.innerText = `$${remaining.toLocaleString()}`;
+      if (remaining < 0) {
+        statRemaining.className = 'text-2xl font-serif font-bold text-red-655';
+      } else {
+        statRemaining.className = 'text-2xl font-serif font-bold text-green-600';
+      }
+    }
+    if (overviewUsed) overviewUsed.innerText = `$${totalAllocated.toLocaleString()}`;
+    if (overviewSubtext) {
+      overviewSubtext.innerText = `Out of $${totalLimit.toLocaleString()} budget • ${percentage}%`;
+      if (remaining < 0) {
+        overviewSubtext.className = 'text-xs font-semibold text-red-655';
+      } else {
+        overviewSubtext.className = 'text-xs font-semibold text-primary-600 dark:text-primary-400';
+      }
+    }
+
+    const progressBar = document.getElementById('budget-progress-bar');
+    if (progressBar) {
+      progressBar.style.width = `${Math.min(100, Math.max(0, percentage))}%`;
+      if (remaining < 0) {
+        progressBar.className = 'bg-red-500 h-3 rounded-full transition-all duration-500';
+      } else {
+        progressBar.className = 'bg-primary-500 h-3 rounded-full transition-all duration-500';
+      }
+    }
+  }
+
   if (expenseForm && expenseList) {
     expenseForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -255,22 +376,61 @@ function initUserDashboardFeatures() {
 
       if (category && desc && amount) {
         const tr = document.createElement('tr');
-        tr.className = 'border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300';
+        tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
         tr.innerHTML = `
-          <td class="py-3 px-4">${desc}</td>
-          <td class="py-3 px-4 font-semibold">${category}</td>
-          <td class="py-3 px-4 text-right font-medium">$${amount.toLocaleString()}</td>
+          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Description:</span>
+            <span>${desc}</span>
+          </td>
+          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Category:</span>
+            <span>${category}</span>
+          </td>
+          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-start md:text-end font-medium text-primary-600 dark:text-primary-400">
+            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
+            <span>$${amount.toLocaleString()}</span>
+          </td>
+          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+            <button class="remove-expense-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+          </td>
         `;
         expenseList.prepend(tr);
         expenseForm.reset();
-        
-        const currentUsedElement = document.getElementById('stat-budget-used');
-        if (currentUsedElement) {
-          let currentVal = parseFloat(currentUsedElement.innerText.replace(/[^0-9.]/g, ''));
-          currentVal += amount;
-          currentUsedElement.innerText = `$${currentVal.toLocaleString()}`;
+        updateBudgetCalculations();
+      }
+    });
+
+    expenseList.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-expense-btn') || e.target.closest('.remove-expense-btn')) {
+        const btn = e.target.classList.contains('remove-expense-btn') ? e.target : e.target.closest('.remove-expense-btn');
+        const row = btn.closest('tr');
+        if (row) {
+          row.remove();
+          updateBudgetCalculations();
         }
       }
+    });
+
+    // Initialize calculations on load
+    updateBudgetCalculations();
+  }
+
+  // Add Guest form Toggles
+  const toggleAddGuestBtn = document.getElementById('toggle-add-guest-btn');
+  const cancelGuestBtn = document.getElementById('cancel-guest-btn');
+  const addGuestPanel = document.getElementById('add-guest-panel');
+
+  if (toggleAddGuestBtn && addGuestPanel) {
+    toggleAddGuestBtn.addEventListener('click', () => {
+      addGuestPanel.classList.toggle('hidden');
+    });
+  }
+
+  if (cancelGuestBtn && addGuestPanel) {
+    cancelGuestBtn.addEventListener('click', () => {
+      addGuestPanel.classList.add('hidden');
+      if (addGuestForm) addGuestForm.reset();
     });
   }
 
@@ -283,26 +443,50 @@ function initUserDashboardFeatures() {
       const name = document.getElementById('guest-name').value;
       const email = document.getElementById('guest-email').value;
       const tableNum = document.getElementById('guest-table').value || '-';
+      const dietary = document.getElementById('guest-dietary').value || 'None';
       const rsvp = document.getElementById('guest-rsvp').value;
 
-      let badgeColor = 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400';
-      if (rsvp === 'Confirmed') badgeColor = 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400';
-      if (rsvp === 'Declined') badgeColor = 'bg-red-50 text-red-700 dark:bg-red-900/20 dark:text-red-400';
+      let badgeColor = 'bg-yellow-50 text-yellow-750 dark:bg-yellow-950/20 dark:text-yellow-405';
+      if (rsvp === 'Confirmed') badgeColor = 'bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400';
+      if (rsvp === 'Declined') badgeColor = 'bg-red-50 text-red-750 dark:bg-red-950/20 dark:text-red-400';
+
+      const dietaryClass = dietary !== 'None' && dietary !== '' ? 'font-semibold text-amber-600' : 'italic text-gray-400';
 
       const tr = document.createElement('tr');
-      tr.className = 'border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300';
+      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-757 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
       tr.innerHTML = `
-        <td class="py-3 px-4 font-medium">${name}</td>
-        <td class="py-3 px-4">${email}</td>
-        <td class="py-3 px-4">${tableNum}</td>
-        <td class="py-3 px-4">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeColor}">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
+          <span>${name}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
+          <span>${email}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
+          <span>${tableNum}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
+          <span class="text-xs ${dietaryClass}">${dietary}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${badgeColor}">
             ${rsvp}
           </span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+          <button type="button" class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
         </td>
       `;
       guestListTable.prepend(tr);
       addGuestForm.reset();
+      if (addGuestPanel) {
+        addGuestPanel.classList.add('hidden');
+      }
 
       const guestCounter = document.getElementById('stat-guests-count');
       if (guestCounter) {
@@ -312,33 +496,137 @@ function initUserDashboardFeatures() {
     });
   }
 
-  // Pin board addition
-  const addPinForm = document.getElementById('add-pin-form');
-  const pinsGrid = document.getElementById('pins-grid');
-  if (addPinForm && pinsGrid) {
-    addPinForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const url = document.getElementById('pin-image-url').value;
-      const title = document.getElementById('pin-title').value;
-      const cat = document.getElementById('pin-category').value;
+  // Vendor Bookings Management
+  const toggleAddVendorBtn = document.getElementById('toggle-add-vendor-btn');
+  const cancelVendorBtn = document.getElementById('cancel-vendor-btn');
+  const addVendorPanel = document.getElementById('add-vendor-panel');
+  const addVendorForm = document.getElementById('add-vendor-form');
+  const vendorListGrid = document.getElementById('vendor-list-grid');
 
-      if (url && title) {
-        const div = document.createElement('div');
-        div.className = 'bg-white dark:bg-gray-900 rounded-2xl overflow-hidden shadow-sm hover-lift border border-gray-100 dark:border-gray-800 transition-custom';
-        div.innerHTML = `
-          <div class="h-48 overflow-hidden bg-gray-100 dark:bg-gray-800 relative">
-            <img src="${url}" alt="${title}" class="w-full h-full object-cover">
-            <span class="absolute top-3 left-3 bg-white/95 dark:bg-black/95 px-3 py-1 rounded-full text-xs font-semibold text-primary-600 dark:text-primary-400">${cat}</span>
-          </div>
-          <div class="p-4">
-            <h4 class="font-serif font-bold text-gray-900 dark:text-white">${title}</h4>
-          </div>
-        `;
-        pinsGrid.prepend(div);
-        addPinForm.reset();
+  function updateVendorCalculations() {
+    if (!vendorListGrid) return;
+    const cards = vendorListGrid.children;
+    const totalCount = cards.length;
+    let confirmedCount = 0;
+    let pendingCount = 0;
+
+    for (let i = 0; i < cards.length; i++) {
+      const badge = cards[i].querySelector('.vendor-status-badge');
+      if (badge) {
+        const text = badge.textContent.trim().toLowerCase();
+        if (text === 'confirmed') {
+          confirmedCount++;
+        } else {
+          pendingCount++;
+        }
       }
+    }
+
+    const statCount = document.getElementById('stat-vendors-count');
+    const statSubtext = document.getElementById('stat-vendors-subtext');
+
+    if (statCount) {
+      statCount.innerText = `${confirmedCount}/${totalCount} Contracts`;
+    }
+    if (statSubtext) {
+      if (pendingCount > 0) {
+        statSubtext.innerText = `${pendingCount} pending coordinator review`;
+        statSubtext.className = 'text-[10px] text-amber-655 mt-1';
+      } else {
+        statSubtext.innerText = `All bookings finalized`;
+        statSubtext.className = 'text-[10px] text-green-600 mt-1';
+      }
+    }
+  }
+
+  if (toggleAddVendorBtn && addVendorPanel) {
+    toggleAddVendorBtn.addEventListener('click', () => {
+      addVendorPanel.classList.toggle('hidden');
     });
   }
+
+  if (cancelVendorBtn && addVendorPanel) {
+    cancelVendorBtn.addEventListener('click', () => {
+      addVendorPanel.classList.add('hidden');
+      if (addVendorForm) addVendorForm.reset();
+    });
+  }
+
+  if (addVendorForm && vendorListGrid) {
+    addVendorForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('vendor-name').value;
+      const category = document.getElementById('vendor-category').value;
+      const contact = document.getElementById('vendor-contact').value;
+      const deposit = parseFloat(document.getElementById('vendor-deposit').value) || 0;
+      const total = parseFloat(document.getElementById('vendor-total').value) || 0;
+      const status = document.getElementById('vendor-status').value;
+
+      let badgeColor = 'bg-yellow-50 text-yellow-700 dark:bg-yellow-950/20 dark:text-yellow-400';
+      if (status === 'Confirmed') {
+        badgeColor = 'bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400';
+      } else if (status === 'Proposal Shared') {
+        badgeColor = 'bg-blue-50 text-blue-750 dark:bg-blue-950/20 dark:text-blue-400';
+      }
+
+      const percent = total > 0 ? Math.round((deposit / total) * 100) : 0;
+      const barColor = percent === 100 ? 'bg-green-500' : (percent > 0 ? 'bg-primary-500' : 'bg-gray-300 dark:bg-gray-700');
+
+      const card = document.createElement('div');
+      card.className = 'bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm space-y-4 flex flex-col justify-between';
+      card.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="vendor-status-badge text-xs font-semibold px-2.5 py-0.5 rounded-full ${badgeColor}">${status}</span>
+            <span class="text-xs font-bold uppercase text-gray-400 tracking-wider">${category}</span>
+          </div>
+          <div>
+            <h3 class="font-serif text-xl font-bold text-gray-900 dark:text-white">${name}</h3>
+            <p class="text-xs text-gray-505 mt-1">Contact: ${contact}</p>
+          </div>
+          <div class="space-y-1">
+            <div class="flex justify-between text-xs text-gray-500">
+              <span>Deposit Paid</span>
+              <span>$${deposit.toLocaleString()} / $${total.toLocaleString()}</span>
+            </div>
+            <div class="w-full bg-gray-100 dark:bg-gray-850 h-1.5 rounded-full">
+              <div class="${barColor} h-1.5 rounded-full" style="width: ${percent}%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800">
+          <a href="#" class="inline-flex items-center gap-1.5 text-xs text-primary-600 dark:text-primary-400 font-bold hover:underline">
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>Download Quote (PDF)</span>
+          </a>
+          <button class="remove-vendor-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+        </div>
+      `;
+
+      vendorListGrid.prepend(card);
+      addVendorForm.reset();
+      addVendorPanel.classList.add('hidden');
+      updateVendorCalculations();
+    });
+  }
+
+  if (vendorListGrid) {
+    vendorListGrid.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-vendor-btn') || e.target.closest('.remove-vendor-btn')) {
+        const btn = e.target.classList.contains('remove-vendor-btn') ? e.target : e.target.closest('.remove-vendor-btn');
+        const card = btn.closest('.bg-white');
+        if (card) {
+          card.remove();
+          updateVendorCalculations();
+        }
+      }
+    });
+
+    // Run initial counts on load
+    updateVendorCalculations();
+  }
+
+
 
   // Checklist updates
   const checklistCheckboxes = document.querySelectorAll('.timeline-checkbox');
@@ -367,8 +655,9 @@ function initAdminDashboardFeatures() {
   if (!document.getElementById('admin-dashboard-root')) return;
 
   const adminCtx = document.getElementById('adminRevenueChart');
+  let adminChart;
   if (adminCtx && typeof Chart !== 'undefined') {
-    new Chart(adminCtx, {
+    adminChart = new Chart(adminCtx, {
       type: 'line',
       data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
@@ -408,11 +697,40 @@ function initAdminDashboardFeatures() {
         }
       }
     });
+    window.activeCharts = window.activeCharts || [];
+    window.activeCharts.push(adminChart);
+  }
+
+  // Client Management Toggles
+  const toggleAddClientBtn = document.getElementById('toggle-add-client-btn');
+  const cancelClientBtn = document.getElementById('cancel-client-btn');
+  const addClientPanel = document.getElementById('add-client-panel');
+
+  if (toggleAddClientBtn && addClientPanel) {
+    toggleAddClientBtn.addEventListener('click', () => {
+      addClientPanel.classList.toggle('hidden');
+    });
+  }
+
+  if (cancelClientBtn && addClientPanel) {
+    cancelClientBtn.addEventListener('click', () => {
+      addClientPanel.classList.add('hidden');
+      if (addClientForm) addClientForm.reset();
+    });
   }
 
   // Add Client
   const addClientForm = document.getElementById('add-client-form');
   const clientListTable = document.getElementById('client-list-table');
+
+  function updateClientCount() {
+    if (!clientListTable) return;
+    const clientCount = document.getElementById('stat-active-clients');
+    if (clientCount) {
+      clientCount.innerText = clientListTable.children.length.toString();
+    }
+  }
+
   if (addClientForm && clientListTable) {
     addClientForm.addEventListener('submit', (e) => {
       e.preventDefault();
@@ -422,29 +740,141 @@ function initAdminDashboardFeatures() {
       const stage = document.getElementById('client-stage').value;
 
       let badgeColor = 'bg-blue-50 text-blue-700 dark:bg-blue-900/20 dark:text-blue-400';
-      if (stage === 'Completed') badgeColor = 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400';
+      if (stage === 'Contract Finalized') badgeColor = 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400';
       if (stage === 'Negotiation') badgeColor = 'bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400';
 
+      // Parse date to prettier format
+      let formattedDate = date;
+      try {
+        const d = new Date(date);
+        const options = { month: 'short', day: '2-digit', year: 'numeric' };
+        formattedDate = d.toLocaleDateString('en-US', options);
+      } catch (err) {}
+
       const tr = document.createElement('tr');
-      tr.className = 'border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300';
+      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
       tr.innerHTML = `
-        <td class="py-3 px-4 font-semibold text-gray-900 dark:text-white">${couple}</td>
-        <td class="py-3 px-4">${date}</td>
-        <td class="py-3 px-4">$${budget.toLocaleString()}</td>
-        <td class="py-3 px-4">
-          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${badgeColor}">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Couple:</span>
+          <span>${couple}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Wedding Date:</span>
+          <span>${formattedDate}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Budget:</span>
+          <span>$${budget.toLocaleString()}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Planning Stage:</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${badgeColor}">
             ${stage}
           </span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+          <span class="md:hidden text-xs font-bold text-gray-405 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+          <button class="remove-client-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
         </td>
       `;
       clientListTable.prepend(tr);
       addClientForm.reset();
+      addClientPanel.classList.add('hidden');
+      updateClientCount();
+    });
 
-      const clientCount = document.getElementById('stat-active-clients');
-      if (clientCount) {
-        let count = parseInt(clientCount.innerText);
-        clientCount.innerText = (count + 1).toString();
+    clientListTable.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-client-btn') || e.target.closest('.remove-client-btn')) {
+        const btn = e.target.classList.contains('remove-client-btn') ? e.target : e.target.closest('.remove-client-btn');
+        const row = btn.closest('tr');
+        if (row) {
+          row.remove();
+          updateClientCount();
+        }
       }
+    });
+
+    // Run initial count on load
+    updateClientCount();
+  }
+
+  // Invoice Management
+  const addInvoiceForm = document.getElementById('add-invoice-form');
+  const invoiceListTable = document.getElementById('invoice-list-table');
+
+  if (addInvoiceForm && invoiceListTable) {
+    addInvoiceForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const couple = document.getElementById('invoice-client').value;
+      const amount = parseFloat(document.getElementById('invoice-amount').value) || 0;
+      const purpose = document.getElementById('invoice-purpose').value;
+      
+      // Random Invoice ID
+      const randomNum = Math.floor(100 + Math.random() * 900);
+      const invoiceId = `INV-2026-${randomNum}`;
+
+      // Prettier date
+      const today = new Date();
+      const options = { month: 'short', day: '2-digit', year: 'numeric' };
+      const formattedDate = today.toLocaleDateString('en-US', options);
+
+      const tr = document.createElement('tr');
+      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
+      tr.innerHTML = `
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
+          <span>${invoiceId}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
+          <span>${couple}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
+          <span>${purpose}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
+          <span>$${amount.toLocaleString()}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
+          <span>${formattedDate}</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
+          <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">Awaiting Approval</span>
+        </td>
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+          <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+          <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
+        </td>
+      `;
+
+      invoiceListTable.prepend(tr);
+      addInvoiceForm.reset();
+    });
+
+    invoiceListTable.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-invoice-btn') || e.target.closest('.remove-invoice-btn')) {
+        const btn = e.target.classList.contains('remove-invoice-btn') ? e.target : e.target.closest('.remove-invoice-btn');
+        const row = btn.closest('tr');
+        if (row) {
+          row.remove();
+        }
+      }
+    });
+  }
+
+  // Scratchpad Autosave
+  const scratchpad = document.getElementById('planner-scratchpad');
+  if (scratchpad) {
+    const savedNotes = localStorage.getItem('everafter_planner_notes');
+    if (savedNotes) {
+      scratchpad.value = savedNotes;
+    }
+    scratchpad.addEventListener('input', () => {
+      localStorage.setItem('everafter_planner_notes', scratchpad.value);
     });
   }
 }
