@@ -113,6 +113,11 @@ h1, h2, h3, h4, h5, h6, .font-serif {
   color: #ffffff !important;
 }
 
+.navbar-transparent-init .nav-toggle-btn:hover,
+.dark .navbar-transparent-init .nav-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+}
+
 .navbar-transparent-init .login-btn-custom,
 .dark .navbar-transparent-init .login-btn-custom {
   border-color: rgba(255, 255, 255, 0.4) !important;
