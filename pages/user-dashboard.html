@@ -199,7 +199,7 @@
         </div>
  
         <!-- Metric Cards -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           <!-- Card 1 -->
           <div class="bg-white dark:bg-gray-900 p-6 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm hover:shadow-md transition-shadow">
             <div class="flex items-center justify-between">
@@ -889,9 +889,9 @@
 
       <!-- SECTION 6: GUEST LIST -->
       <section id="guests" class="dashboard-section hidden space-y-6">
-        <div class="flex justify-between items-center border-b border-gray-150 dark:border-gray-800 pb-3">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-150 dark:border-gray-800 pb-3">
           <h2 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Guest List &amp; RSVPs</h2>
-          <button id="toggle-add-guest-btn" class="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-sm">
+          <button id="toggle-add-guest-btn" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-sm w-full sm:w-auto">
             <span>+ Add Guest</span>
           </button>
         </div>
@@ -930,7 +930,7 @@
         </div>
 
         <!-- RSVP Count Panel -->
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <div class="bg-white dark:bg-gray-900 p-5 rounded-2xl border border-gray-150 dark:border-gray-800 text-center shadow-xs">
             <span class="text-xs font-semibold text-gray-400 uppercase tracking-wider">Total Invited</span>
             <p id="stat-guests-count" class="text-3xl font-serif font-bold text-gray-900 dark:text-white mt-1">120</p>
@@ -954,207 +954,207 @@
             <table class="w-full text-left border-collapse flex flex-col md:table">
               <thead class="hidden md:table-header-group">
                 <tr class="bg-gray-50 dark:bg-gray-800/40 text-[10px] font-bold text-gray-400 dark:text-gray-450 uppercase tracking-wider">
-                  <th class="py-4 px-6">Name</th>
-                  <th class="py-4 px-6">Email</th>
-                  <th class="py-4 px-6">Table</th>
-                  <th class="py-4 px-6">Dietary Needs</th>
-                  <th class="py-4 px-6">Status</th>
-                  <th class="py-4 px-6 text-end">Action</th>
+                  <th class="py-4 px-3 lg:px-6">Name</th>
+                  <th class="py-4 px-3 lg:px-6">Email</th>
+                  <th class="py-4 px-3 lg:px-6">Table</th>
+                  <th class="py-4 px-3 lg:px-6">Dietary Needs</th>
+                  <th class="py-4 px-3 lg:px-6">Status</th>
+                  <th class="py-4 px-3 lg:px-6 text-end">Action</th>
                 </tr>
               </thead>
               <tbody id="guest-list-table" class="flex flex-col md:table-row-group">
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>Charlotte Sterling</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>charlotte@sterling.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 2</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs italic text-gray-400">None</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400">
                       Confirmed
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
-                    <button class="text-xs text-red-650 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
+                    <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>James Sterling</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>james.s@sterling.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 2</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs italic text-gray-400">None</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400">
                       Confirmed
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>Hana Kimura</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>hana@kimuradesign.co</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 5</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs font-semibold text-amber-600">Vegetarian</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 dark:bg-amber-950/20 dark:text-amber-400">
                       Pending
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>Marcus Aurelius</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>marcus@rome.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 3</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs font-semibold text-red-650">Gluten-Free</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400">
                       Confirmed
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>Sarah Jenkins</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>sarah.j@outlook.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 5</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs font-semibold text-purple-600">Vegan</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700 dark:bg-amber-950/20 dark:text-amber-400">
                       Pending
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>David Miller</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>david.m@gmail.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 1</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs italic text-gray-400">None</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-950/20 dark:text-green-400">
                       Confirmed
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>
                 </tr>
                 <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
                     <span>Robert Chen</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
                     <span>robert.c@gmail.com</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
                     <span>Table 8</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
                     <span class="text-xs italic text-gray-400">None</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
-                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-750 dark:bg-red-950/20 dark:text-red-455">
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-50 text-red-750 dark:bg-red-955/20 dark:text-red-455">
                       Declined
                     </span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
                   </td>

@@ -455,29 +455,29 @@ function initUserDashboardFeatures() {
       const tr = document.createElement('tr');
       tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-757 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
       tr.innerHTML = `
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
           <span>${name}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
           <span>${email}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
           <span>${tableNum}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
           <span class="text-xs ${dietaryClass}">${dietary}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${badgeColor}">
             ${rsvp}
           </span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
           <button type="button" class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
         </td>
@@ -672,6 +672,7 @@ function initAdminDashboardFeatures() {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         plugins: {
           legend: {
             display: false
@@ -783,19 +784,218 @@ function initAdminDashboardFeatures() {
       updateClientCount();
     });
 
-    clientListTable.addEventListener('click', (e) => {
-      if (e.target.classList.contains('remove-client-btn') || e.target.closest('.remove-client-btn')) {
-        const btn = e.target.classList.contains('remove-client-btn') ? e.target : e.target.closest('.remove-client-btn');
-        const row = btn.closest('tr');
-        if (row) {
-          row.remove();
-          updateClientCount();
+    // Run initial count on load
+    updateClientCount();
+  }
+
+  // Admin Vendor Partner Management
+  const toggleAddAdminVendorBtn = document.getElementById('toggle-add-admin-vendor-btn');
+  const cancelAdminVendorBtn = document.getElementById('cancel-admin-vendor-btn');
+  const addAdminVendorPanel = document.getElementById('add-admin-vendor-panel');
+  const addAdminVendorForm = document.getElementById('add-admin-vendor-form');
+  const adminVendorsGrid = document.getElementById('admin-vendors-grid');
+
+  if (toggleAddAdminVendorBtn && addAdminVendorPanel) {
+    toggleAddAdminVendorBtn.addEventListener('click', () => {
+      addAdminVendorPanel.classList.toggle('hidden');
+    });
+  }
+
+  if (cancelAdminVendorBtn && addAdminVendorPanel) {
+    cancelAdminVendorBtn.addEventListener('click', () => {
+      addAdminVendorPanel.classList.add('hidden');
+      if (addAdminVendorForm) addAdminVendorForm.reset();
+    });
+  }
+
+  if (addAdminVendorForm && adminVendorsGrid) {
+    addAdminVendorForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('admin-vendor-name').value;
+      const category = document.getElementById('admin-vendor-category').value;
+      const email = document.getElementById('admin-vendor-email').value;
+      const phone = document.getElementById('admin-vendor-phone').value;
+      const location = document.getElementById('admin-vendor-location').value;
+      const rating = parseFloat(document.getElementById('admin-vendor-rating').value) || 4.8;
+      const status = document.getElementById('admin-vendor-status').value;
+
+      let badgeColor = 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
+      if (status === 'Preferred Partner') {
+        badgeColor = 'bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400';
+      }
+
+      const card = document.createElement('div');
+      card.className = 'bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 shadow-sm overflow-hidden p-6 space-y-4';
+      card.innerHTML = `
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-2">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2.5 py-1 rounded-lg">${category}</span>
+            <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white mt-2">${name}</h3>
+          </div>
+          <span class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap ${badgeColor}">${status}</span>
+        </div>
+        <div class="text-xs text-gray-500 space-y-1">
+          <p>Email: ${email}</p>
+          <p>Phone: ${phone}</p>
+          <p>Location: ${location}</p>
+        </div>
+        <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-800 text-xs">
+          <span class="text-amber-500 font-bold">&#9733; ${rating.toFixed(1)} <span class="text-gray-400 font-normal">(0 bookings)</span></span>
+          <button class="remove-admin-vendor-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove Partner</button>
+        </div>
+      `;
+      adminVendorsGrid.prepend(card);
+      addAdminVendorForm.reset();
+      addAdminVendorPanel.classList.add('hidden');
+    });
+  }
+
+  // Remove Admin Vendor
+  if (adminVendorsGrid) {
+    adminVendorsGrid.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-admin-vendor-btn')) {
+        const card = e.target.closest('.bg-white');
+        if (card) card.remove();
+      }
+    });
+  }
+
+  // Live Search & Filtering for Admin Vendors
+  const adminVendorSearch = document.getElementById('admin-vendor-search');
+  const adminVendorFilter = document.getElementById('admin-vendor-filter');
+
+  function filterAdminVendors() {
+    if (!adminVendorsGrid) return;
+    const query = adminVendorSearch ? adminVendorSearch.value.toLowerCase().trim() : '';
+    const catFilter = adminVendorFilter ? adminVendorFilter.value : 'all';
+
+    const cards = adminVendorsGrid.children;
+    for (let card of cards) {
+      const titleEl = card.querySelector('h3');
+      const catEl = card.querySelector('span.text-\\[10px\\]');
+      const infoEl = card.querySelector('.text-xs.text-gray-500');
+
+      const title = titleEl ? titleEl.textContent.toLowerCase() : '';
+      const cat = catEl ? catEl.textContent.trim() : '';
+      const info = infoEl ? infoEl.textContent.toLowerCase() : '';
+
+      const matchesSearch = title.includes(query) || info.includes(query);
+      const matchesCategory = catFilter === 'all' || cat.toLowerCase() === catFilter.toLowerCase();
+
+      if (matchesSearch && matchesCategory) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    }
+  }
+
+  if (adminVendorSearch) adminVendorSearch.addEventListener('input', filterAdminVendors);
+  if (adminVendorFilter) adminVendorFilter.addEventListener('change', filterAdminVendors);
+
+
+  // Admin Timeline Entry Management
+  const toggleAddTimelineBtn = document.getElementById('toggle-add-timeline-btn');
+  const cancelTimelineBtn = document.getElementById('cancel-timeline-btn');
+  const addTimelinePanel = document.getElementById('add-timeline-panel');
+  const addTimelineForm = document.getElementById('add-timeline-form');
+  const adminTimelineList = document.getElementById('admin-timeline-list');
+
+  if (toggleAddTimelineBtn && addTimelinePanel) {
+    toggleAddTimelineBtn.addEventListener('click', () => {
+      addTimelinePanel.classList.toggle('hidden');
+    });
+  }
+
+  if (cancelTimelineBtn && addTimelinePanel) {
+    cancelTimelineBtn.addEventListener('click', () => {
+      addTimelinePanel.classList.add('hidden');
+      if (addTimelineForm) addTimelineForm.reset();
+    });
+  }
+
+  if (addTimelineForm && adminTimelineList) {
+    addTimelineForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const couple = document.getElementById('timeline-name').value;
+      const date = document.getElementById('timeline-date').value;
+      const venue = document.getElementById('timeline-location').value;
+      const action = document.getElementById('timeline-action').value;
+
+      // Calculate days remaining dynamically
+      let daysRemaining = 0;
+      try {
+        const today = new Date();
+        const target = new Date(date);
+        const diffTime = target - today;
+        daysRemaining = Math.max(0, Math.ceil(diffTime / (1000 * 60 * 60 * 24)));
+      } catch (err) {}
+
+      // Prettier date
+      let formattedDate = date;
+      try {
+        const d = new Date(date);
+        const options = { month: 'short', day: '2-digit', year: 'numeric' };
+        formattedDate = d.toLocaleDateString('en-US', options);
+      } catch (err) {}
+
+      const item = document.createElement('div');
+      item.className = 'bg-white dark:bg-gray-900 rounded-2xl border border-gray-100 dark:border-gray-800 p-6 space-y-4';
+      item.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+          <div>
+            <h3 class="font-serif text-lg font-bold text-gray-900 dark:text-white">${couple}</h3>
+            <p class="text-xs text-gray-505">Wedding Date: ${formattedDate} | ${venue}</p>
+          </div>
+          <span class="text-xs font-semibold px-3 py-1 rounded-full bg-primary-100 text-primary-700 dark:bg-primary-900/20 dark:text-primary-400">${daysRemaining} Days Remaining</span>
+        </div>
+        <div class="space-y-2">
+          <div class="flex justify-between text-xs font-semibold text-gray-600 dark:text-gray-400">
+            <span>Checklist Milestones Done</span>
+            <span>0 of 28 Tasks (0%)</span>
+          </div>
+          <div class="w-full bg-gray-100 dark:bg-gray-800 rounded-full h-2">
+            <div class="bg-primary-600 h-2 rounded-full" style="width: 0%"></div>
+          </div>
+        </div>
+        <div class="flex justify-between items-center pt-2 text-xs">
+          <span class="text-gray-500">Next Action: ${action}</span>
+          <div class="flex gap-3">
+            <button class="remove-timeline-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove Event</button>
+          </div>
+        </div>
+      `;
+      adminTimelineList.prepend(item);
+      addTimelineForm.reset();
+      addTimelinePanel.classList.add('hidden');
+    });
+  }
+
+  // Remove Timeline Entry
+  if (adminTimelineList) {
+    adminTimelineList.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-timeline-btn')) {
+        const item = e.target.closest('.rounded-2xl');
+        if (item) item.remove();
+      }
+    });
+  }
+
+  // Live Search for Timelines
+  const adminTimelineSearch = document.getElementById('admin-timeline-search');
+  if (adminTimelineSearch && adminTimelineList) {
+    adminTimelineSearch.addEventListener('input', () => {
+      const query = adminTimelineSearch.value.toLowerCase().trim();
+      const items = adminTimelineList.children;
+      for (let item of items) {
+        const text = item.textContent.toLowerCase();
+        if (text.includes(query)) {
+          item.classList.remove('hidden');
+        } else {
+          item.classList.add('hidden');
         }
       }
     });
-
-    // Run initial count on load
-    updateClientCount();
   }
 
   // Invoice Management

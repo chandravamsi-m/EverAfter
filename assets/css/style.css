@@ -133,7 +133,13 @@ h1, h2, h3, h4, h5, h6, .font-serif {
 /* Ensure active nav link indicator matches transparent mode */
 .navbar-transparent-init .nav-link-item.border-b-2,
 .dark .navbar-transparent-init .nav-link-item.border-b-2 {
-  border-color: rgba(255, 255, 255, 0.8) !important;
+  color: var(--color-primary-300) !important;
+  border-color: var(--color-primary-300) !important;
+}
+
+.navbar-transparent-init .nav-link-item.border-b-2 svg,
+.dark .navbar-transparent-init .nav-link-item.border-b-2 svg {
+  color: var(--color-primary-300) !important;
 }
 
 /* Ensure SVGs and custom toggle icons inherit the light color */
