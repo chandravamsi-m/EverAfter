@@ -376,22 +376,20 @@ function initUserDashboardFeatures() {
 
       if (category && desc && amount) {
         const tr = document.createElement('tr');
-        tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
+        tr.className = 'flex justify-between items-center md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-3 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-sm md:shadow-none';
         tr.innerHTML = `
-          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white">
-            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Description:</span>
-            <span>${desc}</span>
+          <td class="flex flex-col md:table-cell py-1 px-0 md:py-4 md:px-6 font-semibold text-gray-900 dark:text-white text-left">
+            <span class="md:hidden text-[10px] font-bold text-primary-600 bg-primary-50 dark:bg-primary-950/20 dark:text-primary-400 px-2 py-0.5 rounded-md w-max mb-1">${category}</span>
+            <span class="text-sm md:text-sm font-semibold">${desc}</span>
           </td>
-          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
-            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Category:</span>
+          <td class="hidden md:table-cell py-4 md:px-6">
             <span>${category}</span>
           </td>
-          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-start md:text-end font-medium text-primary-600 dark:text-primary-400">
-            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
-            <span>$${amount.toLocaleString()}</span>
+          <td class="flex flex-col items-end md:table-cell py-1 px-0 md:py-4 md:px-6 text-end font-semibold text-primary-600 dark:text-primary-400">
+            <span class="text-base md:text-sm">$${amount.toLocaleString()}</span>
+            <button class="remove-expense-btn md:hidden text-xs text-red-655 hover:text-red-800 font-semibold mt-1">Remove</button>
           </td>
-          <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
-            <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
+          <td class="hidden md:table-cell py-4 md:px-6 text-end">
             <button class="remove-expense-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
           </td>
         `;
@@ -453,31 +451,31 @@ function initUserDashboardFeatures() {
       const dietaryClass = dietary !== 'None' && dietary !== '' ? 'font-semibold text-amber-600' : 'italic text-gray-400';
 
       const tr = document.createElement('tr');
-      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-757 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
+      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-xs md:text-[13px] lg:text-sm text-gray-757 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
       tr.innerHTML = `
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-semibold text-gray-900 dark:text-white">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-semibold text-gray-900 dark:text-white max-w-[120px] lg:max-w-[160px] xl:max-w-none truncate">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Name:</span>
-          <span>${name}</span>
+          <span class="truncate">${name}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[140px] lg:max-w-[180px] xl:max-w-none truncate">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Email:</span>
-          <span>${email}</span>
+          <span class="truncate">${email}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 font-medium text-primary-600 dark:text-primary-400">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-medium text-primary-600 dark:text-primary-400">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Table:</span>
           <span>${tableNum}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Dietary Needs:</span>
           <span class="text-xs ${dietaryClass}">${dietary}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold ${badgeColor}">
             ${rsvp}
           </span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-3 lg:px-6 text-end">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 text-end">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
           <button type="button" class="text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold" onclick="this.closest('tr').remove()">Remove</button>
         </td>
@@ -1019,33 +1017,33 @@ function initAdminDashboardFeatures() {
       const formattedDate = today.toLocaleDateString('en-US', options);
 
       const tr = document.createElement('tr');
-      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
+      tr.className = 'flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-xs md:text-[13px] lg:text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none';
       tr.innerHTML = `
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-mono font-semibold text-gray-900 dark:text-white">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
           <span>${invoiceId}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[160px] xl:max-w-none truncate">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
-          <span>${couple}</span>
+          <span class="truncate">${couple}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[185px] xl:max-w-none truncate">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
-          <span>${purpose}</span>
+          <span class="truncate">${purpose}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-medium text-primary-600 dark:text-primary-400">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
           <span>$${amount.toLocaleString()}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
           <span>${formattedDate}</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
           <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">Awaiting Approval</span>
         </td>
-        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+        <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 text-end">
           <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
           <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
         </td>

@@ -649,11 +649,11 @@
       </section>
 
       <section id="vendors" class="dashboard-section hidden space-y-6">
-        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 border-b border-gray-150 dark:border-gray-800 pb-3">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4 border-b border-gray-150 dark:border-gray-800 pb-3">
           <h2 class="font-serif text-xl font-bold text-gray-900 dark:text-white">Vendor Partners Directory</h2>
-          <div class="flex flex-wrap items-center gap-3 w-full sm:w-auto">
-            <input id="admin-vendor-search" type="text" placeholder="Search vendor..." class="px-3 py-1.5 border border-gray-200 dark:border-gray-800 rounded-xl text-xs bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500 w-full sm:w-48">
-            <select id="admin-vendor-filter" class="px-3 py-1.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-xs text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500">
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full lg:w-auto">
+            <input id="admin-vendor-search" type="text" placeholder="Search vendor..." class="px-3 py-2 sm:py-1.5 border border-gray-200 dark:border-gray-800 rounded-xl text-xs bg-white dark:bg-gray-900 text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500 w-full sm:w-48">
+            <select id="admin-vendor-filter" class="px-3 py-2 sm:py-1.5 border border-gray-200 dark:border-gray-800 rounded-xl bg-white dark:bg-gray-900 text-xs text-gray-950 dark:text-white focus:outline-none focus:ring-1 focus:ring-primary-500 w-full sm:w-auto">
               <option value="all">All Categories</option>
               <option value="Venues">Venues</option>
               <option value="Photography">Photography</option>
@@ -662,7 +662,7 @@
               <option value="Music &amp; Entertainment">Music &amp; Entertainment</option>
               <option value="Attire">Attire</option>
             </select>
-            <button id="toggle-add-admin-vendor-btn" class="px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-sm">
+            <button id="toggle-add-admin-vendor-btn" class="px-3 py-2 sm:py-1.5 text-xs font-bold uppercase tracking-wider text-white bg-primary-600 hover:bg-primary-750 rounded-xl transition-all shadow-sm w-full sm:w-auto whitespace-nowrap">
               + Add Partner
             </button>
           </div>
@@ -1151,102 +1151,102 @@
             <table class="w-full text-left border-collapse flex flex-col md:table">
               <thead class="hidden md:table-header-group">
                 <tr class="bg-gray-50 dark:bg-gray-800/40 text-[10px] font-bold text-gray-400 dark:text-gray-450 uppercase tracking-wider">
-                  <th class="py-4 px-6">Invoice ID</th>
-                  <th class="py-4 px-6">Client</th>
-                  <th class="py-4 px-6">Purpose</th>
-                  <th class="py-4 px-6">Amount</th>
-                  <th class="py-4 px-6">Due Date</th>
-                  <th class="py-4 px-6">Status</th>
-                  <th class="py-4 px-6 text-end">Action</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Invoice ID</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Client</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Purpose</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Amount</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Due Date</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6">Status</th>
+                  <th class="py-4 px-2 lg:px-4 xl:px-6 text-end">Action</th>
                 </tr>
               </thead>
               <tbody id="invoice-list-table" class="flex flex-col md:table-row-group">
-                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-xs md:text-[13px] lg:text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-mono font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
                     <span>INV-2026-089</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[160px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
-                    <span>Alex &amp; Taylor</span>
+                    <span class="truncate">Alex &amp; Taylor</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[185px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
-                    <span>Coordination Deposit</span>
+                    <span class="truncate">Coordination Deposit</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
                     <span>$5,000</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
                     <span>Jul 12, 2026</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Paid</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
                   </td>
                 </tr>
-                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-xs md:text-[13px] lg:text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-mono font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
                     <span>INV-2026-092</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[160px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
-                    <span>Emma &amp; Liam</span>
+                    <span class="truncate">Emma &amp; Liam</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[185px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
-                    <span>Venue Reservation</span>
+                    <span class="truncate">Venue Reservation</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
                     <span>$12,000</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
                     <span>Aug 15, 2026</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-50 text-yellow-700 dark:bg-yellow-900/20 dark:text-yellow-400">Awaiting Approval</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
                   </td>
                 </tr>
-                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-mono font-semibold text-gray-900 dark:text-white">
+                <tr class="flex flex-col md:table-row border-b border-gray-100 dark:border-gray-800 text-xs md:text-[13px] lg:text-sm text-gray-755 dark:text-gray-300 hover:bg-gray-50/50 dark:hover:bg-gray-800/30 transition-colors p-4 md:p-0 mb-4 md:mb-0 bg-white dark:bg-gray-900 rounded-xl md:rounded-none border md:border-0 border-gray-100 dark:border-gray-800 shadow-xs md:shadow-none">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-mono font-semibold text-gray-900 dark:text-white">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Invoice ID:</span>
                     <span>INV-2026-095</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[160px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Client:</span>
-                    <span>Clara &amp; Marcus</span>
+                    <span class="truncate">Clara &amp; Marcus</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 max-w-[120px] lg:max-w-[185px] xl:max-w-none truncate">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Purpose:</span>
-                    <span>Catering Initial Retainer</span>
+                    <span class="truncate">Catering Initial Retainer</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 font-medium text-primary-600 dark:text-primary-400">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 font-medium text-primary-600 dark:text-primary-400">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Amount:</span>
                     <span>$4,500</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Due Date:</span>
                     <span>Sep 10, 2026</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Status:</span>
                     <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-50 text-green-700 dark:bg-green-900/20 dark:text-green-400">Paid</span>
                   </td>
-                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-6 text-end">
+                  <td class="flex justify-between items-center md:table-cell py-2 px-0 md:py-4 md:px-2 lg:px-4 xl:px-6 text-end">
                     <span class="md:hidden text-xs font-bold text-gray-400 dark:text-gray-500 uppercase tracking-wider">Action:</span>
                     <button class="remove-invoice-btn text-xs text-red-655 hover:text-red-800 dark:hover:text-red-400 font-semibold">Remove</button>
                   </td>
